@@ -18,9 +18,9 @@
 #define FAIL 	 -1
 
 
-static char data[MAX_COWS*MAX_SAMPLES];
-static char* pointer;
-static char cow;
+static int data[MAX_COWS*MAX_SAMPLES];
+static int* pointer;
+static int cow;
 
 void Data_Init(){
 	int i;
