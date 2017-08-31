@@ -2,16 +2,29 @@
 
 #include <SoftwareSerial.h>
 
-#include "data.h"
-#include "timer.h"
-#include "milking.h"
+#include "data/data.h"
+#include "timer/timer.h"
+#include "milking/milking.h"
+
+typedef enum commandresp{ESTOYVIVO,ESFINORDGENERAL,NOESFINDEORDGENERAL,DATOSINCONCISTENTES} respuestas;
+
+void OrdVaca();
+void NoOrdVaca();
+void ProcesarComando();
+void InitState();
+
+respuestas Command_Read();
+char Command_Write(char* command);
+char Command_Handler(char* commad);
+
+
 
 SoftwareSerial hm10(7,8);//RX,TX
 // Connect HM10      Arduino Uno
 //     Pin 1/TXD          Pin 7
 //     Pin 2/RXD          Pin 8
 
-/* variables staticas*/
+
 typedef struct {
 	unsigned char flujo:1;
 	unsigned char time_out:1;
@@ -20,11 +33,11 @@ typedef struct {
 
 } inputs;
 
-void (*state_table[])() = {OrdVaca,NoOrdVaca,ProcesarComando};
 
-typedef enum {ORD_VACA = 0, NO_ORD_VACA, PROCESAR_COMANDO, APAGAR} State_type;
 
-typedef enum commandresp{ESTOYVIVO,ESFINORDGENERAL,NOESFINDEORDGENERAL,DATOSINCONCISTENTES} respuestas;
+State_type (*state_table[])() = {OrdVaca,NoOrdVaca,ProcesarComando};
+
+
 
 State_type curr_state;
 inputs evento;
@@ -42,11 +55,7 @@ void setup() {
 }
 
 void loop() {
-			
-		
-		
-
-		
+				
 		if (flag_adquirir){
 			Milking_Adquirir();
 			flag_adquirir = 0;
@@ -73,26 +82,25 @@ void loop() {
 		}
 
 		if (curr_state == APAGAR){
-			break;
+			//bajo consumo
 		}
-		//bajo consumo
-	}
-
+		
 }
+
+
 
 	
 void InitState(){
 
-	curr_state = NoOrdVaca;
+ 	curr_state = NO_ORD_VACA;
 
 }
 void OrdVaca(){
 	
 		if (evento.flujo){
 			curr_state = ORD_VACA;
-			if (Data_SaveData(Milking_Get())<0){
-						
-			}
+      measure_t data = Milking_Get();
+			Data_SaveData(data);
 		}
 		else{
 			curr_state = NO_ORD_VACA;
@@ -113,7 +121,7 @@ void OrdVaca(){
 				//Assert on error		
 			}
 		}
-		flagTimer = 0;
+
 	
 
 }
@@ -207,7 +215,7 @@ respuestas Command_Read(){
 *
 *
 */
-char Command_Write(string command){
+char Command_Write(char* command){
 	switch(command){
 		case "FO":{
 			hm10.write(command);		
@@ -229,7 +237,7 @@ char Command_Write(string command){
 
 }
 
-char Command_Handler(string commad){
+char Command_Handler(char* commad){
 	int aux[MAX_COWS*MAX_SAMPLES];
 	switch(command){
 		

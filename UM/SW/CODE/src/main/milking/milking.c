@@ -1,4 +1,5 @@
 #include "milking.h"
+#include <WProgram.h>
 
 /**
 * @file milking.c

@@ -1,4 +1,5 @@
 #include "timer.h"
+#include <interrupt.h>
 
 static int* flag_adquirir,flag_timer;
 static int ticks;
