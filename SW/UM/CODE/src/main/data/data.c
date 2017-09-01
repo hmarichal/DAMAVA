@@ -42,22 +42,19 @@ char Data_CowsFull(){
                 Serial.write("Buffer de datos lleno");
 		return FULL;
   }
-	else	
+  else	
 		return NOFULL;
 
 }
 
 char Data_SaveData(measure_t samples){
 	if (!SamplesFull()&&!CowsFull()){
-		*(pointer  )= samples.temp[0];
-		*(pointer+1) = samples.temp[1];
-		*(pointer+2) = samples.temp[2];
-		*(pointer+3) = samples.temp[3];
-		*(pointer+4) = samples.cond[0];
-		*(pointer+5) = samples.cond[1];
-		*(pointer+6) = samples.cond[2];
-		*(pointer+7) = samples.cond[3];
-		pointer+=8;
+		*(pointer  )= samples.temp;
+		*(pointer+1) = samples.cond[0];
+		*(pointer+2) = samples.cond[1];
+		*(pointer+3) = samples.cond[2];
+		*(pointer+4) = samples.cond[3];
+		pointer+=5;
 		return OK;
 	}
 	return FAIL;

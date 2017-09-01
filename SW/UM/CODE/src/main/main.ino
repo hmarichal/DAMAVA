@@ -5,6 +5,7 @@
 #include "data/data.h"
 #include "timer/timer.h"
 #include "milking/milking.h"
+#include "mux/mux.h"
 
 typedef enum commandresp{ESTOYVIVO,ESFINORDGENERAL,NOESFINDEORDGENERAL,DATOSINCONCISTENTES} respuestas;
 
@@ -42,9 +43,10 @@ State_type (*state_table[])() = {OrdVaca,NoOrdVaca,ProcesarComando};
 State_type curr_state;
 inputs evento;
 
-int flag_adquirir,flagTimer,timeout;
+int flag_adquirir,flagTimer,timeout,ticks,lectura;
 
 void setup() {
+	Mux_Init();
 	Data_Init();
 	Timer_Init();
 	InitState();
@@ -57,30 +59,31 @@ void setup() {
 void loop() {
 				
 		if (flag_adquirir){
-			Milking_Adquirir();
+			Mux_SeleccionarCuarto(ticks);
+			Milking_Adquirir(ticks,Mux_Read());
+			ticks++;		
+			if (ticks==4){
+				// eventos
+				evento.flujo = Milking_HayFlujo(curr_state);
+
+				if (hm10.available()){
+					evento.nuevo_msj = 1;
+				}
+
+				if (curr_state==NO_ORD_VACA){
+					timeout++;
+				}
+				if (timeout==TIMEOUT){
+					evento.time_out=1;
+				}
+
+				// máquina de estados
+				state_table[curr_state]();
+
+				ticks = 0;		
+			}
 			flag_adquirir = 0;
 		}
-		if (flagTimer){
-			// eventos
-			evento.flujo = Milking_HayFlujo(curr_state);
-
-			if (hm10.available()){
-				evento.nuevo_msj = 1;
-			}
-
-			if (curr_state==NO_ORD_VACA){
-				timeout++;
-			}
-			if (timeout==TIMEOUT){
-				evento.time_out=1;
-			}
-
-			// máquina de estados
-			state_table[curr_state]();
-
-			flagTimer = 0;		
-		}
-
 		if (curr_state == APAGAR){
 			//bajo consumo
 		}
@@ -109,10 +112,6 @@ void OrdVaca(){
 			if (CommandWrite('FO')<0){
 				//Assert on error		
 			}	
-		}
-		if (evento.nuevo_msj){
-			curr_state = PROCESAR_COMANDO;
-			evento.nuevo_msj = 0;
 		}
 		if (evento.vaca_full){
 			curr_state = NO_ORD_VACA;
@@ -147,6 +146,10 @@ void NoOrdVaca(){
 		CommandWrite('MF');
 		//curr_state = ENVIAR_DATOS;
 		evento->memory_full = 0;
+	}
+	if (evento.nuevo_msj){
+		curr_state = PROCESAR_COMANDO;
+		evento.nuevo_msj = 0;
 	}
 
 }

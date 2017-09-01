@@ -20,8 +20,8 @@
 
 
 
+
 static measure_t buffer_ord[TAM_BUFF];
-static measure_t buffer_media[MEDIA_BUFF];
 static char ind_buffer_ord,ind_buffer_media;
 
 
@@ -31,7 +31,7 @@ char Milking_HayFlujo(State_type state){
   	_u8 i;
   	_u8 acumulador[]={1,1,1,1};
 	_u8 resultado;
-	promediar();
+
 	switch(state){
 		case ORD_VACA: {
 			//termina si todos estan bajo el umbral
@@ -60,37 +60,23 @@ char Milking_HayFlujo(State_type state){
 	return resultado;
 }
 
-char Milking_Adquirir(){
-
-	buffer_media[ind_buffer_media].cond[0] = AnalogRead(A0)*VOLT/MAX_RESOLUTION*100;
-	buffer_media[ind_buffer_media].cond[1] = AnalogRead(A1)*VOLT/MAX_RESOLUTION*100;
-	buffer_media[ind_buffer_media].cond[2] = AnalogRead(A2)*VOLT/MAX_RESOLUTION*100;
-	buffer_media[ind_buffer_media].cond[3] = AnalogRead(A3)*VOLT/MAX_RESOLUTION*100;
-	ind_buffer_media++;
+char Milking_Adquirir(char i,int lectura){
 	
+	buffer_media[ind_buffer_media].cond[i] = lectura*VOLT/MAX_RESOLUTION*100;
+	if (i==3){
+		buffer_media[ind_buffer_media].temp = AnalogRead(A1);
+		ind_buffer_media++;
+	}
 	return 0;
 
 }
 
-char Milking_Promediar(){
 
-	char i,j;
-	measure_t promedio = {0,0,0,0};
-	for(i=0,i < MEDIA_BUFF;i++){
-		for (j=0;j<4;j++){
-			promedio.cond[j]+= buffer_media[( ind_buffer_media-i-1 + MEDIA_BUFF ) % MEDIA_BUFF].cond[j]/MEDIA_BUFF;
-		}
-	}
-
-	for (j=0;j<4;i++){
-		buffer_ord[ind_buffer_ord].cond[j] = promedio.cond[j];
-	}
-	return 0;
-}
 
 measure_t Milking_Get(){
 
 	return buffer_ord[(ind_buffer_ord-1+TAM_BUFF)%TAM_BUFF];
 
 }
+
 

@@ -1,6 +1,7 @@
 
 typedef struct{
-    unsigned short cond[4];
+	unsigned int cond[4];
+	unsigned int temp;
 }measure_t;
 
 typedef enum {ORD_VACA = 0, NO_ORD_VACA, PROCESAR_COMANDO, APAGAR} State_type;
