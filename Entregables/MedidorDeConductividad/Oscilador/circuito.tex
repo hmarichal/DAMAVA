@@ -1,0 +1,42 @@
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}[scale=2]
+\draw[color=black, thick]
+
+%Linea de Tierra
+(0,0) to (1,0){} 
+
+% NODO A TIERRA
+(0.5,0) node[ground]{}
+
+% Paralelo de R1 y C1
+(0,0) to [R,l=$R$] (0,1.5)
+(1,0) to [C, l=$C$] (1, 1.5)--(0,1.5)
+
+%Serie de R1 y C1
+(1,1.5) to [R, l_=$R$, *-] (2, 1.5) to [C, l_=$C$] (3, 1.5)
+
+%Amplificador
+(2,3) node[ op amp ] (opamp) {}
+(opamp.out) node[above] {\Large $v_{osc}$}
+(opamp.+) node[above] {\Large $v_f$}
+(opamp.+)-| (1,1.5)
+(opamp.-)-| (1, 4.25) to[R,l=$R_2$,*-*] (3, 4.25) -- (3,3)
+(opamp.-)-|(0,3) to[R, l=$R_1$] (0,2.3)
+% NODO A TIERRA
+(0,2.3) node[ground]{}
+(1,4.25)-| (1, 5) 
+[zD*,l_=$D_1$] (2, 5) to (1,5)
+(2,5) to [zD*,l^=$D_2$] (3,5)--(3,3)
+(opamp.out) -| (3,1.5)
+(opamp.up) --++ (0,0.25) node[above]{15\,\textnormal{V}}
+(opamp.down) --++(0,-0.25) node[below]{-15\,\textnormal{V}}
+
+;
+\draw[black,thick,dashed] (-0.45,1.9) rectangle (3.25,-0.35);
+
+\draw[black,thick,dashed] (-0.45,4.8) rectangle (3.25,2);
+\end{tikzpicture}
+\caption{Oscilador de Wien}
+\label{fig:oscilador}
+\end{figure}

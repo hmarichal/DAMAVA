@@ -1,0 +1,37 @@
+% ------------------------------------------------------------------------------
+% -------------------------------    COMMANDS    -------------------------------
+% ------------------------------------------------------------------------------
+\usepackage{xspace} % para que anden los commands \snr, etc.
+
+\newcommand{\tspace}{\bigskip}
+\newcommand{\tamano}{\footnotesize}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\newcommand{\reff}{\text{ref}\xspace}
+\newcommand{\inn}{\text{in}\xspace}
+\newcommand{\ter}{\text{th}}
+\newcommand{\ntc}{\textsc{ntc}\xspace}
+\newcommand{\ptc}{\textsc{ptc}\xspace}
+
+\newcommand{\head}[1]{\textnormal{\textit{#1}}}
+
+\usepackage{etoolbox}
+\newcommand{\footnotetrucho}[2]{%
+\ifstrempty{#2}{%
+	\textsuperscript{\textit{#1}}%
+	}{%
+		\ifstrempty{#1}{%
+			\scriptsize#2
+		}{%
+			\scriptsize\textsuperscript{\textit{#1}}\hspace{0.5em}#2
+		}%
+	}%
+}%
+
+% Para arreglar el espacio después de etc.
+\makeatletter
+\newcommand\etc{etc\@ifnextchar.{}{.\@}}
+\makeatother
+
+% ------------------------------------------------------------------------------
