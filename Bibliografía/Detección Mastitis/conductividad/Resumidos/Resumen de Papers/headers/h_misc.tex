@@ -1,0 +1,34 @@
+\usepackage{moresize} % para usar el HUGE
+
+\usepackage{datetime} % para poner la hora
+
+\usepackage[textsize=scriptsize]{todonotes} \setlength{\marginparwidth}{2cm}
+
+\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage{enumitem}
+
+\usepackage{relsize}
+
+\usepackage{pdfpages}
+
+\usepackage[
+	bookmarks,
+	bookmarksopen,
+	bookmarksnumbered,
+	hidelinks
+]{hyperref}
+% ------------------------------------------------------------------------------
+% Para arreglar el espacio en las notas al pie.
+\let\oldfootnote\footnote
+\renewcommand\footnote[1]{\oldfootnote{\hspace{0.5em}#1}}
+
+\let\oldfootnotetext\footnotetext
+\renewcommand\footnotetext[1]{\oldfootnotetext{\hspace{0.5em}#1}}
+% ------------------------------------------------------------------------------
+% To prevent a page break before an itemize list
+% http://tex.stackexchange.com/questions/2644/how-to-prevent-a-page-break-before-an-itemize-list
+\makeatletter 
+\newcommand\mynobreakpar{\par\nobreak\@afterheading} 
+\makeatother
+% ------------------------------------------------------------------------------

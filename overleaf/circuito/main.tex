@@ -1,0 +1,37 @@
+% ------------------------------------------------------------------------------
+% ---------------------------------   CLASS    ---------------------------------
+% ------------------------------------------------------------------------------
+\documentclass[a4paper, 11pt]{article}
+
+% ------------------------------------------------------------------------------
+% ---------------------------------  COMMANDS  ---------------------------------
+\input{headers/commands.tex}
+
+% ------------------------------------------------------------------------------
+% ---------------------------------    USES    ---------------------------------
+% ------------------------------------------------------------------------------
+\input{headers/h_gen.tex}	% paquetes varios
+\input{headers/h_tab.tex}	% paquetes para tablas
+\input{headers/h_fig.tex}	% paquetes para figuras
+\input{headers/h_math.tex}	% paquetes para matemática
+\input{headers/h_misc.tex}	% Varios
+
+
+\title{\huge Medidor de Conductividad}
+\author{\textsc{DAMAVA}}
+%\date{23 de junio de 2015}
+
+\graphicspath{{img/}}
+% ------------------------------------------------------------------------------
+% -------------------------------    DOCUMENT    -------------------------------
+% ------------------------------------------------------------------------------
+\begin{document}
+	
+	\pagenumbering{arabic}
+	\maketitle
+	\tableofcontents
+	\newpage
+\input{Oscilador/documentacion.tex}
+\input{DetectorDePicos/documentacion.tex}
+
+\end{document}

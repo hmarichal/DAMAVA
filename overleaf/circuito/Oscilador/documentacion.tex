@@ -1,0 +1,68 @@
+\section{Oscilador de Wien}
+ \subsection{Diseño}
+  El circuito correspondiente al bloque del Oscilador de Wien diseñado se representa en la figura \ref{fig:oscilador}.
+  
+ \input{Oscilador/circuito.tex}
+
+Si inicialmente no se considera la presencia de los diodos, se puede ver que el circuito de la figura \ref{fig:oscilador} se corresponde con un diagrama de bloques como el de la figura \ref{fig:DiagramaDeBloquesOscilador}. El bloque $A$ se corresponde con el recuadro superior de la figura \ref{fig:oscilador} y el bloque $\beta(s)$ se corresponde con el recuadro inferior de dicha figura.
+
+\input{Oscilador/blockDiagram}
+
+El bloque $A$ es un amplificador no inversor de ganancia:
+ $$A=1+\frac{R_2}{R_1}$$
+
+ Por otro lado, el bloque $\beta(s)$ tiene una transferencia dada por:
+\begin{equation*}
+\beta(s)=\frac{\omega_n s}{s^2+3\omega_ns+\omega_n ^2} \hspace{0.5cm}donde\hspace{0.5cm} w_n=\nicefrac{1}{RC}
+\end{equation*}
+
+Abriendo el lazo a la entrada del bloque $A$, tendremos una transferencia en lazo abierto dada por:
+
+$$A\times \beta(s) = \left( 1+\frac{R_2}{R_1}\right) \times \frac{\omega_n s}{s^2+3\omega_ns+\omega_n ^2} $$
+
+Por criterio de Barkhausen, el circuito va a mantener oscilaciones en régimen únicamente a frecuencias $\omega$ para las cuales se cumplen las dos condiciones:
+
+$$\textbf{(C1)}: \hspace{0.1cm}\arg\left(A\times \beta(j\omega)\right)=0$$
+$$\textbf{(C2)}: \left| A\times \beta(j\omega)\right| =1$$
+
+Evaluando la transferencia en lazo abierto en $s=jw$ tenemos:
+
+$$A\times \beta(j\omega) = \left( 1+\frac{R_2}{R_1}\right) \times \frac{j\omega_n\omega}{(\omega_n ^2-\omega ^2) +3j\omega_n\omega} $$
+La única frecuencia a la cual se puede cumplir la condición (C1) es $\omega= \omega_n$. Evaluando el módulo de la transferencia en lazo abierto en dicha frecuencia, obtenemos:
+$$\left| A\times \beta(j\omega_n)\right|  = \left( 1+\frac{R_2}{R_1}\right)\times\frac{1}{3}$$
+Solamente pueden cumplirse (C1) y (C2) a la vez si:
+$$1+\frac{R_2}{R_1}=3$$
+Por tanto, se eligen $R_2$ y $R_1$ tales que $R_2=2R_1$.\\\\
+Notamos que para $A=3$, la única forma de que funcione correctamente el lazo cerrado es con $s=jw_n$. Entonces el valor de la frecuencia de oscilación está dado por: 
+$$f_n=\frac{1}{2\pi RC}$$
+
+\subsubsection{Respecto a los diodos (EXPLICAR)}
+{\color{red}  Se le agrega los diodos Zener EDZV27B y se cambia la resistencia $R_{2}$ por un potenciómetro para poder regular la amplitud de oscilación, de lo contrario la señal satura o se anula dependiendo de si se aproximó por arriba de 1 o por abajo  a la condición de Barkhausen.}\\
+
+\subsection{Selección de compon}
+\subsection{Simulación del circuito en \emph{LTSpice}}
+Se simula el circuito con las componentes observadas en el cuadro \ref{tabla:componentesSimuladas}. Los componentes del bloque $\beta(s)$ son elegidos de manera tal que se obtenga una frecuencia del orden de 10kHz. Por lo que tomando resistencias del orden de los ohmios, se tienen capacidades del orden de los nano faradios. Los cuales son valores estándar en el mercado local. Para el bloque A, se consideran resistencias del orden de los $k\Omega$ para  y se gráfica el voltaje $v_{osc}$ en régimen en función del tiempo. Dicha gráfica se puede ver en la figura \ref{sim:Vosc}. %explicar criterio de seleccion de componenetes. Condensador razonable.
+
+\input{Oscilador/sim_tabla_de_componentes}
+El amplificador que se utiliza en la simulación es un TL071 y diodos 1N4148.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Oscilador/salida_simulada.png}
+	\caption{Simulación: Voltaje de salida del oscilador}
+	\label{sim:Vosc}
+\end{figure}
+El valor teórico de la frecuencia de oscilación está dado por: 
+$$f_n=\frac{1}{2\pi RC}\Longrightarrow f_n = 13,262 \si{\kHz}$$
+El voltaje de salida $V_{osc}$ simulado resultó ser una onda senoidal.\\
+de frecuencia:
+$$f_n^{sim}=12.41 kHz$$
+y amplitud:
+$$V_o^{sim} = 7 V$$
+%Esto sirve porque, para evitar efectos de polarización de los electrodos de la celda de medida de conductividad, se desea trabajar a frecuencias cercanas a $10\si{\kHz}$.
+\subsection{Implementación (Pendiente)}
+VER QUE PASÓ AL IMPLEMENTARLO Y ANOTAR COSAS Y COMPARAR.
+
+
+
+
+

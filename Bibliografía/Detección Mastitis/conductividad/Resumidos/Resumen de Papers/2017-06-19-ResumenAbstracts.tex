@@ -1,0 +1,101 @@
+% ------------------------------------------------------------------------------
+% ---------------------------------   CLASS    ---------------------------------
+% ------------------------------------------------------------------------------
+\documentclass[a4paper, 11pt]{article}
+
+% ------------------------------------------------------------------------------
+% ---------------------------------  COMMANDS  ---------------------------------
+\input{headers/commands.tex}
+
+% ------------------------------------------------------------------------------
+% ---------------------------------    USES    ---------------------------------
+% ------------------------------------------------------------------------------
+\input{headers/h_gen.tex}	% paquetes varios
+\input{headers/h_tab.tex}	% paquetes para tablas
+\input{headers/h_fig.tex}	% paquetes para figuras
+\input{headers/h_math.tex}	% paquetes para matemática
+\input{headers/h_misc.tex}	% Varios
+
+\title{\huge Resumen de Abstracts\\}
+\author{\textsc{DAMAVA}}
+%\date{23 de junio de 2015}
+
+\graphicspath{{img/}}
+% ------------------------------------------------------------------------------
+% -------------------------------    DOCUMENT    -------------------------------
+% ------------------------------------------------------------------------------
+\begin{document}
+	
+	\pagenumbering{arabic}
+	\maketitle
+%	\tableofcontents
+
+\section{\cite{2005}}
+El propósito de este estudio fue evaluar el potencial de detectar mastitis en un sistema automático de ordeñe usando información de serie temporal.
+de conductividad eléctrica de la leche.  
+%Durante 14 meses hubo disponibles datos de 160 vacas de la granja experimental “Karkendamm” de la Universidad de Kiel. 
+Los datos de referencia fueron tratamientos (u observación visual) de mastitis clínica y el conteo semanal de células somáticas de todas las vacas. Muestras con SCC por encima de 400 mil células/ml  y 100 mil células/ml fueron utilizadas como dos límites, junto con tratamientos para definir casos de mastitis. Las series temporales de la conductividad eléctrica de leche de los cuartos fueron analizadas para encontrar desviaciones significativas como una señal de mastitis.\\\\
+Se probó tres métodos estadísticos:
+\begin{itemize}
+	\item Un promedio móvil: $Y'_{t}= \frac{1}{N}\sum_{k=1}^{N}Y_{t-k} \hspace{0.5cm} N= 10$
+	\item Un promedio móvil ponderado exponencialmente:\\ $Y'_{t}=\alpha Y_{t-1}+(1-\alpha)Y'_{t-1}$
+	\item Una regresión localmente ponderada:
+\end{itemize}
+Se dio alertas para mastitis cuando la desviación relativa entre el valor medido y el valor estimado excedía un valor umbral dado, expresado como un porcentaje. Los tres métodos dieron resultados similares en términos de sensibilidad, especificidad y tasa de error. La confiabilidad de las alertas variaba con el valor del umbral. Un umbral bajo ($3\%$) llevó a una sensibilidad de casi $100\%$, sin embargo, la especificidad fue tan solo de alrededor de $36\%$, y por ende la tasa de error fue alta (alrededor de $70\%$). Incrementar el umbral a $7\%$, hizo caer la sensibilidad a $70\%$ y subir la especificidad a $84\%$. En este caso la tasa de error se redujo levemente a $60\%$ Los tres métodos resultaron en una buena sensibilidad y especificidad para un valor apropiado de umbral, pero también una tasa alta de error. En el presente estudio, el promedio móvil fue el método más simple para detectar mastitis y los otros métodos no presentaron ninguna ventaja.
+\section{\cite{2004}}
+%El espectro causa-efecto permite tener un entendimiento más completo del avance de infección bacteriana en la glándula mamaria. Identificando estratégicamente componentes del espectro que ayuden a realizar diagnósticos, sensores online permitirán a granjeros detectar automáticamente la aparición y el avance de la mastitis. En el futuro estas tecnologías permitirán una detección más temprana y confiable de infecciones clínicas y subclínicas.\\\\
+%La mayoría de los granjeros, veterinarios y de las compañías de procesamiento de leche alrededor del mundo listaron a la detección de mastitis como la razón principal de la necesidad de desarrollo de tecnología de sensado online. Sin embargo, cuando se le preguntó a estos grupos a que se refiere la mastitis, resultó obvio que existe una gran confusión en relación a la mastitis y a su detección. Esto es porque la verdadera definición de mastitis es bastante específica, mientras que el término es a menudo utilizado para referir a una amplia y compleja secuencia de eventos. La mastitis es definida por Webster y la Federación Internacional de Lácteos como una inflamación de la ubre. Si esto es cierto, dos preguntas interesantes se vuelven obvias. ¿Cómo se puede construir un sensor que detecta inflamación? ¿Es la verdadera mastits lo que realmente todos quieren detectar?\\\\
+
+%Cada persona ha formulado su propia definición de lo que realmente quiere detectar cuando habla de detectar mastitis. Algunos definen la detección mastitis como el resultado positivo de un test de patógenos bacterianos, otros lo definen en función del conteo de células somáticas, otros cuando ocurren signos clínicos como cuajarse la leche o la inflamación de la ubre.\\\\
+%Estamos trabajando en una rango de sensores cubriendo el espectro de causa-efecto. La idea por detrás del espectro causa-efecto es que cuanto mas lejos de la causa (infección bacteriana), es más probable que un efecto fisiológico sea causado por algo que no es la infección.
+Se investigan los siguientes sistemas de detección de mastitis.
+
+\begin{itemize}
+	\item Ácido láctico. Puesto que las bacterias producen ácido láctico a medida que crecen y se multiplican en la ubre, el ácido láctico es uno de los indicadores más tempranos de infección bacteriana.
+	\item MAA: La respuesta	inicial del sistema inmune de la vaca a una infección es la llamada Respuesta de Fase Aguda. Proteínas de fase aguda, como por ejemplo la MAA, son producidas por la ubre.
+	\item SCC: El conteo de células somáticas es muy importante para el manejo de manadas para muchos granjeros. Tenemos un sensor online directo de SCC.
+	\item Conductividad: La conductividad está más alejada en el espectro causa-efecto. Es un efecto directo del daño de tejido, pero muchas otras cosas aparte de la infección bacteriana también afectan la conductividad. Sin embargo, puede ser utilizada para detectar mastitis si todos los cuartos son medidos durante el ordeñe, y estos datos son comparados con los datos previos de conductividad por cuarto de la vaca.
+\end{itemize}
+
+%\section{\cite{2012}}
+%Resumen\\
+%Con la introducción de ordeñe automatizado a fines de los años 90, se necesitaba sensores para monitorear automáticamente la calidad de la leche. Los primeros sensores provistos medían la conductividad eléctrica, basándose en el influjo de Cloruro de Sodio durante el proceso de inflamación. En el mejor caso, la sensibilidad de la conductividad eléctrica para detección de mastitis es cercana al $30\%$ y a especificidades bajas similares. Se han desarrollado otros medios de monitoreos de calidad de leche, incluyendo conteo online de glóbulos blancos, análisis espectral, tiempo entre ordeñes, sangre y producción de cada cuarto. Luego se introdujo un sistema de detección de mastitis on-line, con medición de LDH (Lactate).\\\\
+%Introducción\\
+%Con la llegada de ordeñe robótico, ha emergido nueva tecnología en años recientes, incluyendo el registro de conductividad eléctrica, desempeño de ordeñe (producción de cuarto, sangre, intervalo de ordeñe en ordeñe robótico) y parámetros específicos a la mastitis en leche (LDH), como son utilizados en el nuevo producto danés \emph{Herd Navigator}.\\\\
+%
+%Aquí se muestran los indicadores presentes de salud de ubre y calidad de leche, sus ventajas y obstáculos en lo que refiere a utilidad.
+
+\section{\cite{2004b}}
+%La conductividad eléctrica de la leche ha sido introducida como una rasgo indicativo de mastitis a lo largo de la última década, y puede ser considerada como rasgo potencial en un programa de engendramiento donde se incluya selección para salud de ubre mejorada. 
+En este estudio, varias características de la conductividad eléctricas fueron investigadas por su asociación con la salud de la ubre. 
+%En total, 322 vacas con 549 lactancias fueron incluidas en el estudio.
+ Se clasificó vacas como saludables o clínicamente o subclínicamente infectadas, y se midió reiteradamente la conductividad eléctrica durante el ordeñe de cada cuarto. Se definió cuatro características de la conductividad eléctrica: El cociente inter-cuarto (IQR) entre los valores más alto y más bajo de conductividad eléctrica, el máximo de conductividad eléctrica de la vaca, IQR entre la variación más alta y más baja de conductividad eléctrica, y el máximo valor de variación de conductividad eléctrica para una vaca.Se calculó valores para estas características para cada ordene durante toda la lactancia.\\\\
+Todas estas características incrementaron significativamente cuando las vacas estaban clínicamente o subclínicamente infectadas. Se utilizó una simple prueba de umbral y un análisis de función discriminante para validar la habilidad de estas características de distinguir entre vacas en diferentes grupos de salud.\\\\ Las características que reflejan el nivel (en vez de la variación), y en particular el IQR, tuvieron un mejor desempeño para clasificar vacas correctamente. Usando esta característica, 80,6 por ciento de los casos clínicos y 45 por ciento de los casos subclínicos fueron correctamente clasificados. Sin embargo, información extra acerca del estado de salud de la ubre se obtuvo cuando se utilizó una combinación de características de la conductividad eléctrica.\\\\
+
+\section{\cite{2013}}
+%Desde los años 80, se ha hecho esfuerzos para desarrollar sensores que midan un parámetro de una vaca individual. Una de las primeras técnicas fue un sensor que mide conductividad eléctrica. La aplicación de conductividad eléctrica en la práctica arrancó a partir de la introducción del sistema de ordeñe automatizado. El objetivo de esta reseña es proveer una visión general estructurada de los sistemas de sensores para el manejo de salud de ubre.\\\\
+El desarrollo de sistemas de sensores puede ser descrito utilizando los siguientes cuatro niveles: (1) Técnicas que miden algo acerca de la vaca (por ejemplo conductividad de la leche). (2) Interpretaciones que resumen cambios en los datos del sensor (por ejemplo incremento de la conductividad de la leche), para producir información acerca del estado de la vaca (ej. mastitis). (3) Integración de información donde se complementa la información del sensor con otra información (p.ej información económica) para poder dar consejo (por ejemplo si tratar una vaca o no). (4) El granjero hace una decisión o el sistema de sensores toma la decisión de forma autónoma (p.ej si se descarta leche).\\\\
+Esta reseña ha estructurado un total de 31 publicaciones desde 2002-2012, describiendo 37 sistemas de sensores para detección de mastitis y los comparó basándose en el sistema de cuatro niveles. Muchos estudios presentaban los sistemas de sensores en los niveles (1) Y (2), y ninguno lo hizo a los niveles (3) y (4). La mayor parte del trabajo de mastitis (92 por ciento) se hace a nivel (2). El desempeño de los sistemas de sensores varía dependiendo de: la elección de estándares (gold standards), los algoritmos utilizados, y los tamaños de las pruebas (números de granjas y vacas). Todavía existe una necesidad de mejorar el desempeño de la detección. No se ha encontrado ningún sistema integrado con ayuda para la toma de decisiones.
+\section{\cite{2002}}
+Se realizó medidas de la conductividad de muestras de leche de cuartos en 31 vacas de una manada de 70 vacas en el sureste de Inglaterra, por un período de 15 semana. A lo largo de este períodod,42 por ciento de las semanas-vaca y 20 pociento de las semanas-cuarto tuvieron un incremento en la conductividad de la leche de 10 por ciento o más respecto a la conductividad de los 14 ordeñes previos. Catorce por ciento de las semanas-cuarto tuvieron un incremento de conductividad por encima del 15 pociento. La media geométrica del conteo de células somáticas fue más alta en semanas-cuarto con un incremento mayor o igual a 10 por ciento que en semanas-cuarto con un cambio en la conductividad de menos del 10 por ciento. Con un umbral de conductividad del 10 o 15 por ciento y un umbral de conteo de células somáticas de 200 mil células/ml o 400 mil células/ml, la especificidad de este sistema estuvo entre un 85 y 92 por ciento, la sensibilidad entre 40 y 50 por ciento, el valor predictivo negativo entre 87 y 93 por ciento, y el valor predictivo positivo entre 35 y 55 por ciento.
+El valor predictivo positivo de la conductividad de cada cuarto individual fue demasiado impreciso como para ser utilizado como único criterio para la selección de cuartos para tratamiento antibiótico.
+
+\begin{thebibliography}{X}
+	\bibitem{2005} \textsc{D. Cavero,K.-H.Tolle,G.Rave,C.Buxadé,J.Krieter}, "\textit{Analysing serial data for mastitis detection by means of local regression}". 
+	
+	\bibitem{2004} \textsc{D.S.Whyte,P.T. Johnstone,R.W.Claycomb an G.A. Mein}, "\textit{Online sensors for earlier, more reliable mastitis detection}".
+	
+	\bibitem{2012} \textsc{Jens Yde lom}, "\textit{Sensors for mastitis management}". 
+	
+	\bibitem{2004b} \textsc{E.Norberg,H.Hogeveen,I.R. Korsgaard, N.C.Friggens,K.H.M.N.Sloth \& P.Lovendahl}, "\textit{Electrical Conductiviy of Milk: Ability to predict Mastitis Status}".
+	
+	\bibitem{2013} \textsc{C.J. Rutten, A.G.J. Velthuis, W. Steeneveld and H. Hogeveen}, "\textit{CAN SENSOR TECHNOLOGY BENEFIT MASTITIS CONTROL}".
+	
+	\bibitem{2002} \textsc{H. J. BIGGADIKE, 1. OHNSTAD, R. A. LAVEN, J. E. HILLERTON}, "\textit{Evaluation of measurements of the
+		conductivity of quarter milk samples for the
+		early diagnosis of mastitis}".
+\end{thebibliography}
+
+\end{document}
+
+
