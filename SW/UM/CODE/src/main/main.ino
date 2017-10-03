@@ -6,6 +6,7 @@
 #include "timer/timer.h"
 #include "milking/milking.h"
 #include "mux/mux.h"
+#include "adc_handler/adc_handler.h"
 
 typedef enum commandresp{ESTOYVIVO,ESFINORDGENERAL,NOESFINDEORDGENERAL,DATOSINCONCISTENTES} respuestas;
 
@@ -20,8 +21,8 @@ char Command_Handler(char* commad);
 
 
 
-SoftwareSerial hm10(7,8);//RX,TX
-// Connect HM10      Arduino Uno
+SoftwareSerial hc05(2,3);//RX,TX
+// Connect hc05      Arduino Uno
 //     Pin 1/TXD          Pin 7
 //     Pin 2/RXD          Pin 8
 
@@ -50,37 +51,62 @@ void setup() {
 	Data_Init();
 	Timer_Init();
 	InitState();
+	Milking_Init();
 	Timer_SetFlag(&flag_adquirir,&flagTimer);
 
 	Serial.begin(9600);
-	hm10.begin(9600);
+	hc05.begin(9600);
 }
 
 void loop() {
 				
 		if (flag_adquirir){
 			Mux_SeleccionarCuarto(ticks);
-			Milking_Adquirir(ticks,Mux_Read());
-			ticks++;		
-			if (ticks==4){
-				// eventos
-				evento.flujo = Milking_HayFlujo(curr_state);
+			//Milking_Adquirir(ticks,Mux_Read());
+			switch (ticks){
+				case 0:{
+					Milking_Save(0,Adc_cond(),-1);
+					ticks++;		
+					break;
 
-				if (hm10.available()){
-					evento.nuevo_msj = 1;
 				}
-
-				if (curr_state==NO_ORD_VACA){
-					timeout++;
+				case 1:{
+					Milking_Save(1,Adc_cond(),-1);
+					ticks++;
+					break;
 				}
-				if (timeout==TIMEOUT){
-					evento.time_out=1;
+				case 2:{
+					Milking_Save(2,Adc_cond(),-1);
+					ticks++;
+					break;
 				}
+				case 3:{
+					Milking_Save(3,Adc_cond(),Adc_temp());
+					// eventos
+					evento.flujo = Milking_HayFlujo(curr_state);
 
-				// máquina de estados
-				state_table[curr_state]();
+					if (hc05.available()){
+						evento.nuevo_msj = 1;
+					}
 
-				ticks = 0;		
+					if (curr_state==NO_ORD_VACA){
+						timeout++;
+					}
+					if (timeout==TIMEOUT){
+						evento.time_out=1;
+					}
+
+					// máquina de estados
+					state_table[curr_state]();
+
+					ticks = 0;		
+
+					break;
+				}
+				default:{
+					Serial.println("Ticks no valido");
+					break;
+				}
 			}
 			flag_adquirir = 0;
 		}
@@ -99,19 +125,27 @@ void InitState(){
 
 }
 void OrdVaca(){
-	
+		measure_t data;
+		int i;
 		if (evento.flujo){
 			curr_state = ORD_VACA;
-      measure_t data = Milking_Get();
+      			Milking_Get(&data);
 			Data_SaveData(data);
 		}
 		else{
+			for (i=0;i<TAM_BUFF;i++){
+				Milking_Get(&data);
+				Data_SaveData(data);
+			}
+			
 			curr_state = NO_ORD_VACA;
 			timeout = 0;
+			
 			evento.memory_full = Data_CowsFull();
 			if (CommandWrite('FO')<0){
 				//Assert on error		
-			}	
+			}
+				
 		}
 		if (evento.vaca_full){
 			curr_state = NO_ORD_VACA;
@@ -145,7 +179,7 @@ void NoOrdVaca(){
 	if (evento.memory_full){
 		CommandWrite('MF');
 		//curr_state = ENVIAR_DATOS;
-		evento->memory_full = 0;
+		evento.memory_full = 0;
 	}
 	if (evento.nuevo_msj){
 		curr_state = PROCESAR_COMANDO;
@@ -184,7 +218,7 @@ respuestas Command_Read(){
 	int c;
 	respuestas resultado;
 
-	c = hm10.read();
+	c = hc05.read();
 	switch(c){ 
 		// es fin de ordeñe o datos inconsistentes
 		case 0: {
@@ -221,13 +255,13 @@ respuestas Command_Read(){
 char Command_Write(char* command){
 	switch(command){
 		case "FO":{
-			hm10.write(command);		
+			hc05.write(command);		
 			break;
 		}
 		case "MF":{
-			int c = hm10.write(command);
-			while not(hm10.available);
-			if (hm10.read()){
+			int c = hc05.write(command);
+			while not(hc05.available);
+			if (hc05.read()){
 				Command_Handler("MF");
 			}
 			break;
@@ -247,12 +281,12 @@ char Command_Handler(char* commad){
 		case "SD":{
 			int i,j,samples;
 			int cow = Data_CowsCount();
-			hm10.write('Start');
+			hc05.write('Start');
 			for(i=0;i<=cow;i++){
 				samples = Data_GetCow(aux);
-				hm10.write(samples);
+				hc05.write(samples);
 				for(j = 0 ; j<samples ;j++){
-					hm10.write(aux[j]);
+					hc05.write(aux[j]);
 				}
 
 			}			
@@ -262,12 +296,12 @@ char Command_Handler(char* commad){
 		case "MF":{
 			int i,j,samples;
 			int cow = Data_CowsCount();
-			hm10.write('Start');
+			hc05.write('Start');
 			for(i=0;i<=cow;i++){
 				samples = Data_GetCow(aux);
-				hm10.write(samples);
+				hc05.write(samples);
 				for(j = 0 ; j<samples ;j++){
-					hm10.write(aux[j]);
+					hc05.write(aux[j]);
 				}
 
 			}

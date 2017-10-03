@@ -22,33 +22,44 @@
 
 
 static measure_t buffer_ord[TAM_BUFF];
-static char ind_buffer_ord,ind_buffer_media;
+static char ind_buffer_ord;
 
-
+char Milking_Init(){
+	int i,j;
+	for(i=0;i<TAM_BUFF;i++){
+		for(j=0;j<TAM_BUFF;j++)
+			buffer_ord[i].cond[j]=0;
+		buffer_ord[i].temp = 0;
+	}
+	ind_buffer_ord = 0;
+}
 
 char Milking_HayFlujo(State_type state){
 
-  	_u8 i;
-  	_u8 acumulador[]={1,1,1,1};
-	_u8 resultado;
+  	char i;
+  	char acumulador[]={1,1,1,1};
+	char resultado;
+	char indice;
 
 	switch(state){
 		case ORD_VACA: {
 			//termina si todos estan bajo el umbral
-			for (i=0;i<TAM_BUFF;i++){           
-      				resultado=resultado||(buffer_ord[i].cond[0]>UMBRAL_COND)||(buffer_ord[i].cond[1]>UMBRAL_COND)||(buffer_ord[i].cond[2]>UMBRAL_COND)||(buffer_ord[i].cond[3]>UMBRAL_COND);
+			for (i=0;i<TAM_BUFF;i++){
+				indice = (ind_buffer_ord-i+TAM_BUFF)%TAM_BUFF;           
+      				resultado = resultado||(buffer_ord[indice].cond[0]>UMBRAL_COND)||(buffer_ord[indice].cond[1]>UMBRAL_COND)||(buffer_ord[indice].cond[2]>UMBRAL_COND)||(buffer_ord[indice].cond[3]>UMBRAL_COND);
     			}
 			break;
 		}
 		case NO_ORD_VACA:{
 			//arranca si todos son mayores al umbral
-			 for (i=0;i<TAM_BUFF;i++){             
-				      acumulador[0]= acumulador[0]&&(buffer_ord[i].cond[0]>UMBRAL_COND);
-    				      acumulador[1]= acumulador[1]&&(buffer_ord[i].cond[1]>UMBRAL_COND);
-      				      acumulador[2]= acumulador[2]&&(buffer_ord[i].cond[2]>UMBRAL_COND);
-      				      acumulador[3]= acumulador[3]&&(buffer_ord[i].cond[3]>UMBRAL_COND);
+			 for (i=0;i<TAM_BUFF;i++){   
+				      indice = (ind_buffer_ord-i+TAM_BUFF)%TAM_BUFF;            
+				      acumulador[0]= acumulador[0]&&(buffer_ord[indice].cond[0]>UMBRAL_COND);
+    				      acumulador[1]= acumulador[1]&&(buffer_ord[indice].cond[1]>UMBRAL_COND);
+      				      acumulador[2]= acumulador[2]&&(buffer_ord[indice].cond[2]>UMBRAL_COND);
+      				      acumulador[3]= acumulador[3]&&(buffer_ord[indice].cond[3]>UMBRAL_COND);
       			}
-  			resultado=(acumulador[0]||acumulador[1]||acumulador[2]||acumulador[3]);
+  			resultado = (acumulador[0]||acumulador[1]||acumulador[2]||acumulador[3]);
 
 			break;
 		}
@@ -60,22 +71,36 @@ char Milking_HayFlujo(State_type state){
 	return resultado;
 }
 
-char Milking_Adquirir(char i,int lectura){
-	
-	buffer_media[ind_buffer_media].cond[i] = lectura*VOLT/MAX_RESOLUTION*100;
-	if (i==3){
-		buffer_media[ind_buffer_media].temp = AnalogRead(A1);
-		ind_buffer_media++;
+char Milking_Save(char i,int cond,int temp){
+	switch(i){
+		case 0,1,2:{
+			buffer_ord[ind_buffer_ord].cond[i] = cond;
+			break;	
+		}
+		case 3:{
+			buffer_ord[ind_buffer_ord].cond[3] = cond;
+			buffer_ord[ind_buffer_ord].temp = temp;
+			ind_buffer_ord = (ind_buffer_ord+1) % TAM_BUFF;
+			break;
+		}
+		default:{
+			return 1;
+			break;
+		}
 	}
 	return 0;
-
 }
 
 
 
-measure_t Milking_Get(){
+char Milking_Get(measure_t* aux){
 
-	return buffer_ord[(ind_buffer_ord-1+TAM_BUFF)%TAM_BUFF];
+	char i;
+	for(i = 0 ;i < 4;i++){	
+		(*aux).cond[i] = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].cond[i];
+	}
+	(*aux).temp = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].temp;
+	return 0;
 
 }
 
