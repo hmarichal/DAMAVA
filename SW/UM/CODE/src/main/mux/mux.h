@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 void Mux_Init();
-void Mux_SeleccionarCuarto();
+void Mux_SeleccionarCuarto(char);
 
 
 #endif

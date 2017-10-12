@@ -1,0 +1,1 @@
+Adc_temp	KEYWORD1Adc_cond	KEYWORD2

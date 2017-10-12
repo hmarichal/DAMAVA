@@ -44,7 +44,7 @@ State_type (*state_table[])() = {OrdVaca,NoOrdVaca,ProcesarComando};
 State_type curr_state;
 inputs evento;
 
-int flag_adquirir,flagTimer,timeout,ticks,lectura;
+int flagTimer,timeout,ticks,lectura;
 
 void setup() {
 	Mux_Init();
@@ -52,7 +52,7 @@ void setup() {
 	Timer_Init();
 	InitState();
 	Milking_Init();
-	Timer_SetFlag(&flag_adquirir,&flagTimer);
+	Timer_SetFlag(&flagTimer);
 
 	Serial.begin(9600);
 	hc05.begin(9600);

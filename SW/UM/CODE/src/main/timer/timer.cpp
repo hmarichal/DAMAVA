@@ -1,18 +1,18 @@
 #include "timer.h"
-#include <interrupt.h>
+#include "Arduino.h"
 
 
-static int* flag_adquirir,flag_timer;
-static int ticks;
 
-void Timer_SetFlag(int* flag_adquirir_main,int* flag_timer_main){
+
+Timer::Timer(){}
+
+void Timer::SetFlag(int* flag_timer_main){
 	
-	flag_adquirir = flag_adquirir_main;
-	flag_timer = flag_timer_main;
+	_flagTimer = flag_timer_main;
 
 }
 
-void Timer_Init(void){
+void Timer::Init(void){
 
 	//set timer1 interrupt at 4Hz
 	TCCR1A = 0;// set entire TCCR1A register to 0
@@ -33,7 +33,7 @@ void Timer_Init(void){
 
 
 ISR(TIMER1_COMPA_vect){ 
-	*flag_adquirir = 1;
+	*_flagTimer = 1;
 }
 
 

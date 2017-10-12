@@ -1,0 +1,1 @@
+Data_Init	KEYWORD1Data_SamplesFull	KEYWORD2Data_CowsFull	KEYWORD3Data_SaveData	KEYWORD4Data_NextCow	KEYWORD5Data_GetCow	KEYWORD6Data_CowsCount	KEYWORD7

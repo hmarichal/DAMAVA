@@ -1,4 +1,4 @@
-function [R1,C1,R2,C2,Rm,C3] = AjusteAdmitancia(datos,f)
+function [R1,C1,R2,C2,Rm,C3] = AjusteAdmitancia(datos,f,x0)
   
     funDiff = @(x,s)((x(5)*x(3)*x(4)*x(1)*x(2).*s.^2+(x(5)*x(3)*x(4)+x(1)*x(2)*(x(5)+x(3))+x(1)*x(3)*x(4)).*s+x(5)+x(3)+x(1))./...
         (x(1)*x(2)*x(3)*x(4).*s.^2+(x(1)*x(2)+x(3)*x(4)).*s+1) ) 
@@ -7,7 +7,7 @@ function [R1,C1,R2,C2,Rm,C3] = AjusteAdmitancia(datos,f)
     funTodo = @(x,s)((x(5)*x(3)*x(4)*x(1)*x(2).*s.^2+(x(5)*x(3)*x(4)+x(1)*x(2)*(x(5)+x(3))+x(1)*x(3)*x(4)).*s+x(5)+x(3)+x(1))./...
         (x(5)*x(3)*x(4)*x(1)*x(2)*x(6).*s.^3+(x(1)*x(2)*x(3)*x(4)+x(6)*(x(1)*x(4)*x(3)+x(5)*x(3)*x(4)+x(1)*x(2)*x(5)*x(3))).*s.^2+...
         (x(1)*x(2)+x(3)*x(4)+x(5)*x(3)*x(6)).*s+1) )
-    x0 = [126,2*10^(-6),805,2*10^(-5),170,0.0001*10^(-9)];
+    funSinR = @(x,s)(1+s*x(1)*x(2))./(s*(x(2)+x(3))+(s.^2)*x(1)*x(2)*x(3));
     
     x = lsqcurvefit(funTodo,x0,f,datos);
     figure(1);

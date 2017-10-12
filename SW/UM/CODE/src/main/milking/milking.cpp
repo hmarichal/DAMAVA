@@ -1,5 +1,5 @@
 #include "milking.h"
-#include <WProgram.h>
+#include "Arduino.h"
 
 /**
 * @file milking.c
