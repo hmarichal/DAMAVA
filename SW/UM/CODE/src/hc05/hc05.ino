@@ -20,7 +20,12 @@ void setup()   {
   BTSerial.flush();
   delay(500);
 
-  BTSerial.begin(9600);
+  //BTSerial.begin(1200);
+  // BTSerial.begin(2400);
+   // BTSerial.begin(4800);
+     BTSerial.begin(9600);
+      //BTSerial.begin(19200);
+      //BTSerial.begin(38400);
   BTSerial.println("The controller has successfuly connected to the PC");
 
    
@@ -28,7 +33,7 @@ void setup()   {
     buff[i] = i;
    }
 
-
+/*
 void loop()
 {
     BTSerial.write("F?");
@@ -49,4 +54,10 @@ void loop()
         
     }
 
-}
+}*/
+void loop()
+   {  if (BTSerial.available())
+            Serial.write(BTSerial.read());
+      if (Serial.available())
+            BTSerial.write(Serial.read());
+   }

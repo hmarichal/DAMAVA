@@ -13,7 +13,7 @@
 
 */
 #define TAM_BUFF	10		
-#define UMBRAL_COND	100
+#define UMBRAL_COND	90
 #define MEDIA_BUFF	10
 #define VOLT		5
 #define MAX_RESOLUTION	1023
@@ -27,7 +27,7 @@ static char ind_buffer_ord;
 char Milking_Init(){
 	int i,j;
 	for(i=0;i<TAM_BUFF;i++){
-		for(j=0;j<TAM_BUFF;j++)
+		for(j=0;j<4;j++)
 			buffer_ord[i].cond[j]=0;
 		buffer_ord[i].temp = 0;
 	}
@@ -63,7 +63,7 @@ char Milking_HayFlujo(State_type state){
 
 			break;
 		}
-		default {
+		default: {
 			resultado = -1;
 		}
 	
@@ -73,7 +73,15 @@ char Milking_HayFlujo(State_type state){
 
 char Milking_Save(char i,int cond,int temp){
 	switch(i){
-		case 0,1,2:{
+		case 0:{
+			buffer_ord[ind_buffer_ord].cond[i] = cond;
+			break;	
+		}
+		case 1:{
+			buffer_ord[ind_buffer_ord].cond[i] = cond;
+			break;	
+		}
+		case 2:{
 			buffer_ord[ind_buffer_ord].cond[i] = cond;
 			break;	
 		}

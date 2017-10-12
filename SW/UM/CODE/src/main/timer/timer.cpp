@@ -1,18 +1,17 @@
 #include "timer.h"
-#include "Arduino.h"
 
 
 
+static int* flag_timer;
 
-Timer::Timer(){}
 
-void Timer::SetFlag(int* flag_timer_main){
+void Timer_SetFlag(int* flag_timer_main){
 	
-	_flagTimer = flag_timer_main;
+	flag_timer = flag_timer_main;
 
 }
 
-void Timer::Init(void){
+void Timer_Init(void){
 
 	//set timer1 interrupt at 4Hz
 	TCCR1A = 0;// set entire TCCR1A register to 0
@@ -33,7 +32,7 @@ void Timer::Init(void){
 
 
 ISR(TIMER1_COMPA_vect){ 
-	*_flagTimer = 1;
+	*flag_timer = 1;
 }
 
 

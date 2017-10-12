@@ -1,8 +1,8 @@
 #ifndef MILKING_H
 #define MILKING_H
 typedef struct{
-	unsigned int cond[4];
-	unsigned int temp;
+	unsigned char cond[4];
+	unsigned char temp;
 }measure_t;
 
 typedef enum {ORD_VACA = 0, NO_ORD_VACA, PROCESAR_COMANDO, APAGAR} State_type;
