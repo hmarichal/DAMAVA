@@ -5,7 +5,7 @@ typedef struct{
 	unsigned char temp;
 }measure_t;
 
-typedef enum {ORD_VACA = 0, NO_ORD_VACA, PROCESAR_COMANDO, APAGAR} State_type;
+typedef enum {ORD_VACA = 0, NO_ORD_VACA, ENVIAR_DATOS, APAGAR} State_type;
 
 char Milking_HayFlujo(State_type);
 char Milking_Save(char,int,int);
