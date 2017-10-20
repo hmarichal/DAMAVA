@@ -17,23 +17,8 @@ buff = []
 vacas = np.linspace(1,BUFFER_TAM,BUFFER_TAM)
 while(1):
 	data = sock.recv(1)
-        #print "hola"
-	if(data=='S'):
-		print('UM lista para enviar datos')
-		
-		sock.send('0')
-
-
-		time.sleep(0.15)
-		for i in range(BUFFER_TAM):
-			buff.append(sock.recv(1))
-		vacas = np.hstack((vacas,buff))
-		#print len(buff)
-		#time.sleep(0.1)
-		print('Dato leido')
-		sock.send('3')
-		break
-	#sock.send('1')
+	print data       
+	sock.send('1')
         
 
   

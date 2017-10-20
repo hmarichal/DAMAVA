@@ -18,8 +18,8 @@
 #define FAIL 	 -1
 #define MAX_SAMPLES	600
 
-static char data[MAX_SAMPLES];
-static char* pointer;
+static int data[MAX_SAMPLES];
+static int* pointer;
 
 
 void Data_Init(){
@@ -50,7 +50,7 @@ char Data_SaveData(measure_t samples){
 	return FAIL;
 }
 
-char Data_GetSample(int i){
+int Data_GetSample(int i){
 	if(i<MAX_SAMPLES)
 		return data[i];
 	else	

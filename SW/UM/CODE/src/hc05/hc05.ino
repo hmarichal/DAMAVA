@@ -33,26 +33,6 @@ void setup()   {
     buff[i] = i;
    }
 
-/*
-void loop()
-{
-    BTSerial.write("F?");
-    delay(5000);
-    if (BTSerial.available()){
-      
-        if (BTSerial.read()=='S'){
-            delay(100);
-            Serial.println("fin de ordeñe");
-            BTSerial.write('h');
-            for (int i;i<100;i++){
-                BTSerial.print(buff[i]);
-                
-            }
-            BTSerial.write('j');    
-        }
-        
-        
-    }
 
 }*/
 void loop()

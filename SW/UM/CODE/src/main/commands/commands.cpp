@@ -1,5 +1,6 @@
 #include "commands.h"
 
+#define TIMEOUT 200
 
 static SoftwareSerial* hc05;
 
@@ -24,6 +25,8 @@ respuestas Command_Read(){
 	respuestas resultado;
 	//Serial.println("Leyendo");
 	c = hc05->read();
+	Serial.println("Que leí?");
+	Serial.println(c);
 	switch(c){ 
 		// lecpro listo para recibir datos
 		case '0': {
@@ -77,31 +80,72 @@ respuestas Command_Write(char command){
 	respuestas resp = RESPNOVALIDA;
 	switch(command){
 		case 'S':{
-			hc05->write(command);
+			int i = 0;
 			while(1){
-				boolean espero;
+				boolean espero = false;
+
+				hc05->write(command);
+
 				
-				while (espero){
+				while ((espero) && (i++<TIMEOUT)){
 					if (hc05->available())
 						espero = true;
 					else
 						espero = false;
 				}
-				resp = Command_Read();
-				if (resp == DATOSENVIADOS){
-					delay(100);
+				if (i==TIMEOUT){
 					resp = Command_Read();
-					break;
+					//espero = true;
+					if (resp == DATOSENVIADOS){
+						delay(100);
+						while (espero){
+							if (hc05->available())
+								espero = true;
+							else
+								espero = false;
+						}
+						resp = Command_Read();
+						break;
+					}
+					Serial.println("Estoy aquí?");
 				}
-				Serial.println("Estoy aquí?");
+				i = 0;
       			}
 			Serial.println("Sali del loop!Hiujaaa!!!");
+			break;
+		}
+		case 'F':{
+			int i = 0;
+			while(1){
+				
+				boolean espero = true;
+				hc05->write(command);
+
+				while ( (espero) && (i++<TIMEOUT) ){
+					
+					if (hc05->available())
+						espero = true;
+					else
+						espero = false;
+				}
+				if (i==TIMEOUT){			
+					
+					resp = Command_Read();
+					//espero = true;
+					if ((resp == ESFINORDGENERAL) || (resp == NOESFINORDGENERAL)){
+						break;
+					}
+					Serial.println("Estoy aquí?");
+				}
+				i = 0;
+      			}			
 			break;
 		}
 		default:{
 			
 		}
 	}
+	return resp;
 	
 
 }
@@ -115,7 +159,10 @@ char Command_Handler(char command){
 			int samples = Data_SamplesCount();
 			Serial.println(millis());
 			for(j = 0 ; j<=samples ;j++){
-					hc05->write(Data_GetSample(j));
+					int aux = Data_GetSample(j);
+					
+					hc05->write((char)(aux&0x00FF));
+					hc05->write(((char)(aux>>8)&0x00FF));
 					//delay(100);
 					Serial.println(j);
 			}			
