@@ -1,7 +1,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#include "Arduino.h"
+
 #include "data.h"
 #include "SoftwareSerial.h"
 /***********************************************************************/

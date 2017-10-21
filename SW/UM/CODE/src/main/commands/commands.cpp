@@ -82,27 +82,27 @@ respuestas Command_Write(char command){
 		case 'S':{
 			int i = 0;
 			while(1){
-				boolean espero = false;
+				boolean espero = true;
 
 				hc05->write(command);
 
 				
 				while ((espero) && (i++<TIMEOUT)){
 					if (hc05->available())
-						espero = true;
-					else
 						espero = false;
+					else
+						espero = true;
 				}
-				if (i==TIMEOUT){
+				if not(espero){
 					resp = Command_Read();
-					//espero = true;
+					espero = true;
 					if (resp == DATOSENVIADOS){
 						delay(100);
 						while (espero){
 							if (hc05->available())
-								espero = true;
-							else
 								espero = false;
+							else
+								espero = true;
 						}
 						resp = Command_Read();
 						break;
@@ -124,12 +124,12 @@ respuestas Command_Write(char command){
 				while ( (espero) && (i++<TIMEOUT) ){
 					
 					if (hc05->available())
-						espero = true;
-					else
 						espero = false;
+					else
+						espero = true;
 				}
-				if (i==TIMEOUT){			
-					
+				if not(espero){			
+					espero = true;
 					resp = Command_Read();
 					//espero = true;
 					if ((resp == ESFINORDGENERAL) || (resp == NOESFINORDGENERAL)){

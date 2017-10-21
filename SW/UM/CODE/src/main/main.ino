@@ -94,10 +94,10 @@ void OrdVaca(){
 		measure_t data;
 		int i;
 		evento.flujo = Milking_HayFlujo(curr_state);
-
+		// Se utiliza la condicional if else para acentuar las difencias si hay flujo o no.
 		if (evento.flujo){
 
-      			Milking_Get(&data);
+      		Milking_Get(&data);
 			Data_SaveData(data);
 		}
 		else{

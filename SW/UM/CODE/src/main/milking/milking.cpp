@@ -105,9 +105,9 @@ char Milking_Get(measure_t* aux){
 
 	char i;
 	for(i = 0 ;i < 4;i++){	
-		(*aux).cond[i] = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].cond[i];
+		(*aux).cond[i] = buffer_ord[(ind_buffer_ord)%TAM_BUFF].cond[i];
 	}
-	(*aux).temp = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].temp;
+	(*aux).temp = buffer_ord[(ind_buffer_ord)%TAM_BUFF].temp;
 	return 0;
 
 }
