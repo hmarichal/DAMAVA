@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import bluetooth
 import sys
 import time
@@ -7,7 +8,8 @@ bd_addr = "98:D3:31:FB:57:EF"
 
 port = 1
 sock = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
-sock.connect((bd_addr, port))
+print sock
+print sock.connect((bd_addr, port))
 print('Connected')
 #sock.settimeout(1.0)
 time.sleep(1)
