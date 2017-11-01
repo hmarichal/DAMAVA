@@ -1,6 +1,6 @@
 #include "commands.h"
 
-#define TIMEOUT 200
+#define TIMEOUT 2000
 
 static SoftwareSerial* hc05;
 
@@ -37,7 +37,7 @@ respuestas Command_Read(){
 		}
 		// lecpro no listo para recibir datos
 		case '1':{
-			Serial.write("Es fin de ordeñé general");
+			Serial.write("Lecpro no listo para recivir datos");
 			resultado = LECPRONOLISTO;
 			break;
 		}
@@ -93,7 +93,7 @@ respuestas Command_Write(char command){
 					else
 						espero = true;
 				}
-				if not(espero){
+				if (espero==false){
 					resp = Command_Read();
 					espero = true;
 					if (resp == DATOSENVIADOS){
@@ -110,6 +110,7 @@ respuestas Command_Write(char command){
 					Serial.println("Estoy aquí?");
 				}
 				i = 0;
+				delay(10000);
       			}
 			Serial.println("Sali del loop!Hiujaaa!!!");
 			break;
@@ -128,11 +129,11 @@ respuestas Command_Write(char command){
 					else
 						espero = true;
 				}
-				if not(espero){			
+				if (espero==false){			
 					espero = true;
 					resp = Command_Read();
 					//espero = true;
-					if ((resp == ESFINORDGENERAL) || (resp == NOESFINORDGENERAL)){
+					if ((resp == ESFINORDGENERAL) || (resp == NOESFINDEORDGENERAL)){
 						break;
 					}
 					Serial.println("Estoy aquí?");
@@ -158,6 +159,7 @@ char Command_Handler(char command){
 			int j;
 			int samples = Data_SamplesCount();
 			Serial.println(millis());
+			delay(2000);
 			for(j = 0 ; j<=samples ;j++){
 					int aux = Data_GetSample(j);
 					

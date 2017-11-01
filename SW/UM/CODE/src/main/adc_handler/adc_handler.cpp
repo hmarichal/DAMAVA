@@ -2,7 +2,7 @@
 
 
 int Adc_temp(){
-	return ((analogRead(A0)*5/1023)/0.1)*100;// presicion de 100mV/C
+	return ((analogRead(A0)*5/1023)*1000);// presicion de 100mV/C
 
 }
 

@@ -1,0 +1,6 @@
+waiting for connection
+waiting for connection
+waiting for connection
+waiting for connection
+waiting for connection
+accepted conection from  ('3C:A1:0D:DD:97:8F', 1)

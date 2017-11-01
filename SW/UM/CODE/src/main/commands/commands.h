@@ -4,6 +4,7 @@
 
 #include "data.h"
 #include "SoftwareSerial.h"
+#include "Arduino.h"
 /***********************************************************************/
 typedef enum commandresp{ESTOYVIVO=0,ESFINORDGENERAL,NOESFINDEORDGENERAL,DATOSINCONCISTENTES,DATOSENVIADOS,LECPRONOLISTO,RESPNOVALIDA} respuestas;
 

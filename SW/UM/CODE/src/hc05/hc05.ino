@@ -31,10 +31,10 @@ void setup()   {
    
   for(int i=0;i<100;i++)
     buff[i] = i;
-   }
+   
 
 
-}*/
+}
 void loop()
    {  if (BTSerial.available())
             Serial.write(BTSerial.read());
