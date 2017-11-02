@@ -129,10 +129,10 @@ void NoOrdVaca(){
 }
 
 void EnviarDatos(){
-	if (Command_Write('S') == ESFINORDGENERAL)
-		evento.fin =1;
-	else
-		evento.fin = 0;
+	respuestas resp = LECPRONOLISTO;
+	while (resp == LECPRONOLISTO){
+	 resp = Command_Write('S');
+	}
 	timeout = 0;
 }
 

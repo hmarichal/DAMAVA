@@ -15,7 +15,7 @@ void setup(){
   Command_SetSerial(&hc05);
   Command_Init();
   Data_Init();
-  for(int i=0;i<121;i++){
+  for(int i=0;i<120;i++){
       aux.cond[0] = 257;
       aux.cond[1] = 514;
       aux.cond[2] = 771;
@@ -27,9 +27,9 @@ void setup(){
 
 void loop(){ 
       delay(10000);
-      if (noLoop){
-          resp = Command_Write('S');
-      }
+      
+      resp = Command_Write('S');
+      
       switch(resp){
         case NOESFINDEORDGENERAL:{
                 Serial.print("No es fin de ordene");
@@ -37,7 +37,31 @@ void loop(){
           }
         case ESFINORDGENERAL:{
                 Serial.print("Es fin de ordenie");
-                noLoop = false;
+                
+                break;
+          
+          }
+        case DATOSENVIADOS:{
+                Serial.print("DATOS ENVIADOS");
+                break;
+          }
+        case LECPRONOLISTO:{
+                Serial.print("LECPRO NO LISTO");
+                
+                break;
+          
+          }
+
+        case DATOSINCONCISTENTES:{
+                Serial.print("DATOS INCONSISTENTES");
+                
+                break;
+          
+          }
+
+        case RESPNOVALIDA:{
+                Serial.print("RESPUESTA NO VALIDA");
+                
                 break;
           
           }
@@ -45,8 +69,59 @@ void loop(){
           Serial.print("Mensaje no valido");
           break;
         }
-       } 
-       delay(20000);
+       }
+       resp = Command_Write('F'); 
+       
+      
+      switch(resp){
+        case NOESFINDEORDGENERAL:{
+                Serial.print("No es fin de ordene");
+                break;
+          }
+        case ESFINORDGENERAL:{
+                Serial.print("Es fin de ordenie");
+                
+                break;
+          
+          }
+        case DATOSENVIADOS:{
+                Serial.print("DATOS ENVIADOS");
+                break;
+          }
+        case LECPRONOLISTO:{
+                Serial.print("LECPRO NO LISTO");
+                
+                break;
+          
+          }
+
+        case DATOSINCONCISTENTES:{
+                Serial.print("DATOS INCONSISTENTES");
+                
+                break;
+          
+          }
+
+        case RESPNOVALIDA:{
+                Serial.print("RESPUESTA NO VALIDA");
+                
+                break;
+          
+          }
+        default:{
+          Serial.print("Mensaje no valido");
+          break;
+        }
+       }
+
+       for(int i=0;i<120;i++){
+      aux.cond[0] = 257;
+      aux.cond[1] = 514;
+      aux.cond[2] = 771;
+      aux.cond[3] = 1028;
+      aux.temp = 2056;
+      Data_SaveData(aux);
+  }
     
 
 }

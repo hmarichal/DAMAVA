@@ -1,7 +1,7 @@
 #ifndef DATA_H
 #define DATA_H
 #include "milking.h"
-#include "Arduino.h"
+
 
 void Data_Init();
 char Data_SamplesFull();

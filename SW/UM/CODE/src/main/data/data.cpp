@@ -57,7 +57,7 @@ int Data_GetSample(int i){
 		return -1;
 }
 int Data_SamplesCount(){
-	return pointer-data+1;
+	return pointer-data;
 	
 }
 

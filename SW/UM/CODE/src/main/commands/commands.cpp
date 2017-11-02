@@ -81,65 +81,35 @@ respuestas Command_Write(char command){
 	switch(command){
 		case 'S':{
 			int i = 0;
-			while(1){
-				boolean espero = true;
-
-				hc05->write(command);
-
-				
-				while ((espero) && (i++<TIMEOUT)){
-					if (hc05->available())
-						espero = false;
-					else
-						espero = true;
-				}
-				if (espero==false){
-					resp = Command_Read();
+			boolean espero = true;
+			hc05->write(command);
+			//delay(100);
+			while ((espero)){
+				Serial.println("Esperando Respuesta de lecpro\n");
+				if (hc05->available())
+					espero = false;
+				else
 					espero = true;
-					if (resp == DATOSENVIADOS){
-						delay(100);
-						while (espero){
-							if (hc05->available())
-								espero = false;
-							else
-								espero = true;
-						}
-						resp = Command_Read();
-						break;
-					}
-					Serial.println("Estoy aquí?");
-				}
-				i = 0;
-				delay(10000);
-      			}
-			Serial.println("Sali del loop!Hiujaaa!!!");
+			}
+			
+			resp = Command_Read();
 			break;
 		}
 		case 'F':{
-			int i = 0;
-			while(1){
 				
 				boolean espero = true;
 				hc05->write(command);
 
-				while ( (espero) && (i++<TIMEOUT) ){
-					
+				while (espero ){
+					Serial.println("Esperando respuesta de fin de ordenie");
 					if (hc05->available())
 						espero = false;
 					else
 						espero = true;
 				}
-				if (espero==false){			
-					espero = true;
-					resp = Command_Read();
-					//espero = true;
-					if ((resp == ESFINORDGENERAL) || (resp == NOESFINDEORDGENERAL)){
-						break;
-					}
-					Serial.println("Estoy aquí?");
-				}
-				i = 0;
-      			}			
+				resp = Command_Read();
+				
+      			
 			break;
 		}
 		default:{
@@ -158,16 +128,28 @@ char Command_Handler(char command){
 		case 'S':{
 			int j;
 			int samples = Data_SamplesCount();
-			Serial.println(millis());
-			delay(2000);
-			for(j = 0 ; j<=samples ;j++){
-					int aux = Data_GetSample(j);
-					
-					hc05->write((char)(aux&0x00FF));
-					hc05->write(((char)(aux>>8)&0x00FF));
-					//delay(100);
-					Serial.println(j);
-			}			
+			int aux = Data_GetSample(j);
+			char lb;
+			char hb;
+			Serial.print("Se envian ");
+			Serial.print(samples);
+			Serial.println(" muestras");
+			for(j = 0 ; j<samples ;j++){
+					aux = Data_GetSample(j);
+					lb = (aux&0x00FF);
+					hb = (aux>>8)&0x00FF;
+					if (lb == '\r'){
+						lb+=1;
+					}
+					if (hb == '\r'){
+						hb+=1;
+					}
+					hc05->write(lb);
+					hc05->write(hb);
+			}
+			//comando de fin de mensaje
+			hc05->write('\r');
+			Serial.println("Datos enviados");
 			break;
 		}
 		default:{
