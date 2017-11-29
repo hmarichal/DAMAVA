@@ -2,18 +2,21 @@
 #include "SoftwareSerial.h"
 #include "data.h"
 #include "milking.h"
+#include "timer.h"
 int fin;
-SoftwareSerial hc05(10,11);
+SoftwareSerial hc05(2,3);
 measure_t aux;
 respuestas resp;
 int i = 1;
 int cont[10];
 boolean noLoop = true;
+int flagTimer,timeout,ticks;
 void setup(){ 
   Serial.println("Iniciando");
   Serial.begin(9600);
   Command_SetSerial(&hc05);
   Command_Init();
+  Timer_Init();
   Data_Init();
   for(int i=0;i<120;i++){
       aux.cond[0] = 257;
@@ -28,7 +31,7 @@ void setup(){
 void loop(){ 
       delay(10000);
       
-      resp = Command_Write('S');
+      //resp = Command_Write('S');
       
       switch(resp){
         case NOESFINDEORDGENERAL:{
@@ -70,8 +73,9 @@ void loop(){
           break;
         }
        }
+      // noInterrupts();
        resp = Command_Write('F'); 
-       
+       //interrupts();
       
       switch(resp){
         case NOESFINDEORDGENERAL:{

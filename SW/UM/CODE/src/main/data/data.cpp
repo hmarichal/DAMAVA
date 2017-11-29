@@ -16,7 +16,7 @@
 #define NOFULL	 0
 #define OK1 	1
 #define FAIL 	 -1
-#define MAX_SAMPLES	600
+#define MAX_SAMPLES	500
 
 static int data[MAX_SAMPLES];
 static int* pointer;

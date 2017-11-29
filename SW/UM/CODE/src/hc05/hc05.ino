@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 
-#define RxD 10
-#define TxD 11
+#define RxD 2
+#define TxD 3
 
 SoftwareSerial BTSerial(RxD, TxD);
 

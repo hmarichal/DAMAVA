@@ -1,5 +1,7 @@
 #ifndef MILKING_H
 #define MILKING_H
+
+
 typedef struct{
 	unsigned int cond[4];
 	unsigned int temp;

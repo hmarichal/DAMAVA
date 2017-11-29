@@ -6,6 +6,7 @@
 #include "mux.h"
 #include "adc_handler.h"
 #include "commands.h"
+
 #define TAM_BUFF 10
 SoftwareSerial hc05(2,3);
 
@@ -44,7 +45,7 @@ void setup() {
 }
 
 void loop(){
-				
+		 
 		if (flagTimer){
 			Mux_SeleccionarCuarto(ticks);
 			if (ticks<3){
@@ -52,25 +53,29 @@ void loop(){
 				ticks++;		
 			}
 			else{
-				Milking_Save(ticks,Adc_cond(),Adc_temp());
-				// eventos
-				
-				if (evento.fin){
+        //Command_Write('F');   
+        int c = Adc_cond();
+        int t = Adc_temp();
+				Milking_Save(ticks,c,t);
+				Serial.println("Los datos sensados son: ");
+        Serial.print("Temperatura: ");Serial.print(t);Serial.print("Conductividad: ");Serial.print(c);Serial.println();       
+			  if (evento.fin){
 					curr_state = APAGAR;				
-				}
-				else{
-					curr_state = NO_ORD_VACA;
 				}
 				if (evento.flujo){
 					curr_state = ORD_VACA;
+         
 				}
 				else{
-					if (curr_state == NO_ORD_VACA){
+          if (curr_state == NO_ORD_VACA){
 						curr_state = NO_ORD_VACA;
+         
 					}
-					if (curr_state == ORD_VACA){
-						curr_state = ENVIAR_DATOS;
-					}
+         if (curr_state == ORD_VACA){
+            curr_state = ENVIAR_DATOS;
+           
+          }
+					
 				}
 				// máquina de estados
 				state_table[curr_state]();
@@ -81,7 +86,8 @@ void loop(){
 		}
 
 		if (curr_state == APAGAR){
-
+        noInterrupts();
+        Serial.println("Estado apagar");
 		}
 
 }
@@ -91,14 +97,15 @@ void InitState(){
 
 }
 void OrdVaca(){
+    Serial.println("Estado En Ordenie");
 		measure_t data;
 		int i;
 		evento.flujo = Milking_HayFlujo(curr_state);
 		// Se utiliza la condicional if else para acentuar las difencias si hay flujo o no.
 		if (evento.flujo){
 
-      		Milking_Get(&data);
-			Data_SaveData(data);
+      Milking_Get(&data);
+      Data_SaveData(data);
 		}
 		else{
 			for (i=0;i<TAM_BUFF;i++){
@@ -110,13 +117,13 @@ void OrdVaca(){
 }
 
 void NoOrdVaca(){
-
+Serial.println("Estado En NOOO Ordenie");
 	evento.flujo = Milking_HayFlujo(curr_state);
 
 	timeout++;
 
 	if (timeout==TIMEOUT){
-
+    //noInterrupts();
 		timeout = 0;		
 		if (Command_Write('F')==ESFINORDGENERAL){
 			evento.fin = 1;
@@ -124,16 +131,19 @@ void NoOrdVaca(){
 		else{
 			evento.fin = 0;
 		}
+    //interrupts();  
 
 	}
 }
 
 void EnviarDatos(){
+  Serial.println("Estado Enviar datos");
 	respuestas resp = LECPRONOLISTO;
 	while (resp == LECPRONOLISTO){
 	 resp = Command_Write('S');
 	}
 	timeout = 0;
+ curr_state = NO_ORD_VACA;
 }
 
 void Apagar(){

@@ -20,17 +20,20 @@ server_sock.setblocking(False)
 server_sock.listen(1)
 
 port = server_sock.getsockname()[1]
-while True:
-	print "waiting for connection"
-	readable,writable,excepts=select([server_sock],[],[], 1 )
-	if server_sock in readable:
-		client_sock,client_info = server_sock.accept()
-		client_sock.setblocking(False)
-		print "accepted conection from ",client_info
-		break
-req = []
+conectar = True
 while True:          
     try:
+	if conectar:
+		while True:
+			print "waiting for connection"
+			readable,writable,excepts=select([server_sock],[],[], 1 )
+			if server_sock in readable:
+				client_sock,client_info = server_sock.accept()
+				client_sock.setblocking(False)
+				print "accepted conection from ",client_info
+				break
+		req = []
+		conectar = False
 	readable,writable, excepts = select([client_sock],[],[],1)
 	if client_sock in readable:
 		req = client_sock.recv(1024)
@@ -75,8 +78,9 @@ while True:
 			RxUM1.close()
 	else:
 		RxUM1.close()
-#    except IOError:
-#       pass
+    except IOError:
+       conectar = True
+       print 'Error'
 
     except KeyboardInterrupt:
         print "disconnected"

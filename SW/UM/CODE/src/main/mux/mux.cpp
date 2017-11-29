@@ -21,25 +21,25 @@ void Mux_SeleccionarCuarto(char i){
 	
 
 	switch(i){
-		case 0:{
+		case 3:{
 
 			digitalWrite(s1,0);
 			digitalWrite(s2,0);
 			
 			break;		
 		}
-		case 1:{
+		case 2:{
 			digitalWrite(s1,1);
 			digitalWrite(s2,0);
 
 			break;	
 		}
-		case 2:{
+		case 0:{
 			digitalWrite(s1,0);
 			digitalWrite(s2,1);
 			break;
 		}
-		case 3:{
+		case 1:{
 			digitalWrite(s1,1);
 			digitalWrite(s2,1);
 			break;

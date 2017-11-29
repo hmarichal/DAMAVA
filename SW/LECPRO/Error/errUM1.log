@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "establecimientoConeccion.py", line 19, in <module>
-    sock.connect((bd_addr,int(port)))
-  File "<string>", line 3, in connect
-KeyboardInterrupt

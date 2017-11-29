@@ -1,5 +1,5 @@
 #include "milking.h"
-#include "Arduino.h"
+
 
 /**
 * @file milking.c
@@ -13,11 +13,10 @@
 
 */
 #define TAM_BUFF	10		
-#define UMBRAL_COND	90
+#define UMBRAL_COND	200
 #define MEDIA_BUFF	10
 #define VOLT		5
 #define MAX_RESOLUTION	1023
-
 
 
 
@@ -105,9 +104,9 @@ char Milking_Get(measure_t* aux){
 
 	char i;
 	for(i = 0 ;i < 4;i++){	
-		(*aux).cond[i] = buffer_ord[(ind_buffer_ord)%TAM_BUFF].cond[i];
+		(*aux).cond[i] = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].cond[i];
 	}
-	(*aux).temp = buffer_ord[(ind_buffer_ord)%TAM_BUFF].temp;
+	(*aux).temp = buffer_ord[(ind_buffer_ord+1)%TAM_BUFF].temp;
 	return 0;
 
 }

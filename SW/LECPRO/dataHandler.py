@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Sat Oct 28 09:10:27 2017
@@ -7,15 +8,16 @@ Created on Sat Oct 28 09:10:27 2017
 
 import numpy as np
 
-def conversion(filename):
-	TAM = 120
-	f = open(filename,'r')
+def conversion(filenameInput,filenameOutput):
+	f = open(filenameInput,'r')
 
 	temp = []
 	c1,c2,c3,c4 = [],[],[],[]
 
-	for i in range(TAM):
+	while(1):
 	    low = f.read(1)
+	    if low == '\r':
+		break
 	    high = f.read(1)
 	    temp.append(ord(high)<<8|ord(low))
 
@@ -44,4 +46,4 @@ def conversion(filename):
 	c4 = np.array(c4,dtype=float)
 	temp = np.array(temp,dtype=float)
 	datos = (np.array([c1.T,c2.T,c3.T,c4.T,temp.T]))/100.0
-	np.savetxt(filename,datos.T,header='C1  C2   C3    C4    T',delimiter=' ',fmt ='%2.2f')
+	np.savetxt(filenameOutput,datos.T,header='C1  C2   C3    C4    T',delimiter=' ',fmt ='%2.2f')
