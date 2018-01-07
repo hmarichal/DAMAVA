@@ -88,41 +88,31 @@ while True:
              time.sleep(1)
              conectar = False
              sock.send('S')
+        recibido = sock.recv(1)
 
         lb = sock.recv(1)
         hb = sock.recv(1)
         dato = float(ord(hb)<<8|ord(lb))
         #dato = adc_cond(dato)
-        cond1.append(dato)
-        print ('conductividad 1 es ',dato)
+        if (recibido==0):
+		cond1.append(dato)
+		print ('conductividad 1 es ',dato)
+        else:
+		if (recibido==1):
 
-        lb = sock.recv(1)
-        hb = sock.recv(1)
-        dato = (ord(hb)<<8|ord(lb))
-        #dato = adc_cond(dato)
-        cond2.append(dato)
-        print ('conductividad 2 es ',dato)
-
-        lb = sock.recv(1)
-        hb = sock.recv(1)
-        dato = (ord(hb)<<8|ord(lb))
-        #dato = adc_cond(dato)
-        cond3.append(dato)
-        print ('conductividad 3 es ',dato)
-
-        lb = sock.recv(1)
-        hb = sock.recv(1)
-        dato = (ord(hb)<<8|ord(lb))
-        #dato = adc_cond(dato)
-        cond4.append(dato)
-        print ('conductividad 4 es ',dato)
-
-        lb = sock.recv(1)
-        hb = sock.recv(1)
-        dato = (ord(hb)<<8|ord(lb))
-        #dato = adc_temp(dato)
-        temp.append(dato)
-        print ('temperatura es ',dato)
+			cond2.append(dato)
+			print ('conductividad 2 es ',dato)
+		else:
+			if (recibido==2):
+				cond3.append(dato)
+				print ('conductividad 3 es ',dato)
+			else:
+				if (recibido==3):
+					cond4.append(dato)
+					print ('conductividad 4 es ',dato)
+				else:
+					temp.append(dato)
+					print ('temperatura es ',dato)
 
 
         if len(cond1)>9 and hayFlujo():

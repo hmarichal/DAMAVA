@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 
-#define RxD 2
-#define TxD 3
+#define RxD 10
+#define TxD 11
 
 SoftwareSerial BTSerial(RxD, TxD);
 
@@ -13,7 +13,7 @@ void setup()   {
   pinMode(9, OUTPUT);        // cuando se alimente de aqui
   digitalWrite(9, HIGH);
   delay (500) ;              // Espera antes de encender el modulo
-  Serial.begin(9600);
+  Serial.begin(38400);
   Serial.println("Levantando el modulo HC-06");
   digitalWrite (8, HIGH);    //Enciende el modulo
   Serial.println("Esperando comandos AT:");
@@ -23,9 +23,9 @@ void setup()   {
   //BTSerial.begin(1200);
   // BTSerial.begin(2400);
    // BTSerial.begin(4800);
-     BTSerial.begin(9600);
-      //BTSerial.begin(19200);
-      //BTSerial.begin(38400);
+     //BTSerial.begin(9600);
+     // BTSerial.begin(19200);
+      BTSerial.begin(38400);
   BTSerial.println("The controller has successfuly connected to the PC");
 
    

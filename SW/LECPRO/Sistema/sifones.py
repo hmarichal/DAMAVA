@@ -125,14 +125,8 @@ while True:
         print ('temperatura es ',dato)
 
 
-        if len(cond1)>9 and hayFlujo():
+        if True:
             print 'EN ORDENIE'
-            if not ordenie:
-                med1 = []
-                med2 = []
-                med3 = []
-                med4 = []
-                med5 = []
             med1.append(cond1[-1])
             med2.append(cond2[-1])
             med3.append(cond3[-1])
@@ -156,8 +150,20 @@ while True:
                 temp = temp[-9:]
 
     except KeyboardInterrupt:
-        sock.close()
-        break
+                datos = np.array([med1,med2,med3,med4,med5])
+                datos = datos.T
+                datos = datos
+                np.savetxt('Datos/Vaca_'+str(port)+'_'+str(contador)+'.txt',datos,header='C1    C2   C3     C4      T',delimiter=' ',fmt ='%2.2f')
+                contador = contador+1
+                ordenie = False
+                cond1 = cond1[-9:]
+                cond2 = cond2[-9:]
+                cond3 = cond3[-9:]
+                cond4 = cond4[-9:]
+                temp = temp[-9:]
+
+                sock.close()
+                break
 
     except IOError:
        print 'Error'
