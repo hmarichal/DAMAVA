@@ -69,7 +69,9 @@ conectar = True
 # mac hc05
 bd_addr = sys.argv[1]
 #puerto 
+print bd_addr
 port = sys.argv[2]
+print sys.argv[2]
 if sys.argv[3]=='t':
 	mac = "E4:A4:71:6D:DE:BC"
 	print 'tarjeta'
@@ -88,41 +90,45 @@ while True:
              time.sleep(1)
              conectar = False
              sock.send('S')
-        recibido = sock.recv(1)
 
         lb = sock.recv(1)
         hb = sock.recv(1)
         dato = float(ord(hb)<<8|ord(lb))
         #dato = adc_cond(dato)
-        if (recibido==0):
-		cond1.append(dato)
-		print ('conductividad 1 es ',dato)
-        else:
-		if (recibido==1):
+        cond1.append(dato)
+        print ('conductividad 1 es ',dato)
 
-			cond2.append(dato)
-			print ('conductividad 2 es ',dato)
-		else:
-			if (recibido==2):
-				cond3.append(dato)
-				print ('conductividad 3 es ',dato)
-			else:
-				if (recibido==3):
-					cond4.append(dato)
-					print ('conductividad 4 es ',dato)
-				else:
-					temp.append(dato)
-					print ('temperatura es ',dato)
+        lb = sock.recv(1)
+        hb = sock.recv(1)
+        dato = (ord(hb)<<8|ord(lb))
+        #dato = adc_cond(dato)
+        cond2.append(dato)
+        print ('conductividad 2 es ',dato)
+
+        lb = sock.recv(1)
+        hb = sock.recv(1)
+        dato = (ord(hb)<<8|ord(lb))
+        #dato = adc_cond(dato)
+        cond3.append(dato)
+        print ('conductividad 3 es ',dato)
+
+        lb = sock.recv(1)
+        hb = sock.recv(1)
+        dato = (ord(hb)<<8|ord(lb))
+        #dato = adc_cond(dato)
+        cond4.append(dato)
+        print ('conductividad 4 es ',dato)
+
+        lb = sock.recv(1)
+        hb = sock.recv(1)
+        dato = (ord(hb)<<8|ord(lb))
+        #dato = adc_temp(dato)
+        temp.append(dato)
+        print ('temperatura es ',dato)
 
 
-        if len(cond1)>9 and hayFlujo():
+        if True:
             print 'EN ORDENIE'
-            if not ordenie:
-                med1 = []
-                med2 = []
-                med3 = []
-                med4 = []
-                med5 = []
             med1.append(cond1[-1])
             med2.append(cond2[-1])
             med3.append(cond3[-1])
@@ -146,8 +152,20 @@ while True:
                 temp = temp[-9:]
 
     except KeyboardInterrupt:
-        sock.close()
-        break
+                datos = np.array([med1,med2,med3,med4,med5])
+                datos = datos.T
+                datos = datos
+                np.savetxt('Datos/Vaca_'+str(port)+'_'+str(contador)+'.txt',datos,header='C1    C2   C3     C4      T',delimiter=' ',fmt ='%2.2f')
+                contador = contador+1
+                ordenie = False
+                cond1 = cond1[-9:]
+                cond2 = cond2[-9:]
+                cond3 = cond3[-9:]
+                cond4 = cond4[-9:]
+                temp = temp[-9:]
+
+                sock.close()
+                break
 
     except IOError:
        print 'Error'
