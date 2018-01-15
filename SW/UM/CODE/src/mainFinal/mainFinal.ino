@@ -7,43 +7,38 @@ SoftwareSerial hc05(2,3);
 int flagTimer,ticks,cond,temp;
 char lb,hb;
 boolean comenzar = false;
+void SendBuff(int buff[]);
+int buff[5];
+
 void setup() {
 
   Mux_Init();
   Timer_Init();
   Timer_SetFlag(&flagTimer);
   Mux_SeleccionarCuarto(0);
-  Serial.begin(9600);
+  Serial.begin(38400);
   hc05.flush();
   delay(500);
-  hc05.begin(9600);
+  hc05.begin(38400);
 
 }
 
 void loop() {
+
   if ((flagTimer)and(comenzar)){
       flagTimer = 0;
-      cond = analogRead(A1);
-      ticks++;
-      Mux_SeleccionarCuarto(ticks);
       
-      Serial.print("Conductividad del Cuarto ");Serial.print(ticks);Serial.print(" es ");Serial.println(cond);
-      lb = (cond&0x00FF);
-      hb = (cond>>8)&0x00FF;
-      //hc05.write(ticks);
-      hc05.write(lb);
-      hc05.write(hb);
+      
+      ticks++;
+      cond = analogRead(A1);
+      buff[ticks] = cond;
+      Mux_SeleccionarCuarto(ticks);
 
       if (ticks==3){
         ticks=-1;
         temp = analogRead(A0);
-        Serial.print("La temperatura es ");
-        Serial.println(temp);
-        lb = (temp&0x00FF);
-        hb = (temp>>8)&0x00FF;
-        hc05.write(lb);
-        hc05.write(hb);
-
+        buff[4] = temp;
+        SendBuff(buff);
       }
       
 
@@ -66,4 +61,16 @@ void loop() {
       
       }
 
+}
+void SendBuff(int buff[]){
+  unsigned char lb,hb;
+  hc05.write('I');
+  for(char j;j<5;j++){
+        lb = (buff[j]&0x00FF);
+        hb = (buff[j]>>8)&0x00FF;
+        hc05.write(lb);
+        hc05.write(hb);
+    }
+  
+  
 }
