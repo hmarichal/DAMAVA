@@ -41,6 +41,7 @@ global med5
 med5 = []
 
 def hayFlujo():
+    global temp,cond1,cond2,cond3,cond4,med1,med2,med3,med4,med5,ordenie,umbral,timeOut,maxIntentos
     resultado1 = True
     resultado2 = True
     resultado3 = True
@@ -50,7 +51,7 @@ def hayFlujo():
         for i in range(-10,0):
             resultado = cond1[i]>umbral or cond2[i]>umbral or cond3[i]>umbral or cond4[i]>umbral or resultado
     else:
-        print 'entre bien'
+
         for i in range(-10,0):
             resultado1 = cond1[i]>umbral and resultado1
             resultado2 = cond2[i]>umbral and resultado2
@@ -71,13 +72,18 @@ def adc_temp(dato):
     return medida
 
 def UMhandler(bd_addr,device,adapter,port,conn):
+    global temp,cond1,cond2,cond3,cond4,med1,med2,med3,med4,med5,ordenie,umbral,timeOut,maxIntentos
     vacasOrd,intentosConeccion = 0,0
     conectarUM = True
-    
+    fin = False
+    caravana = [0]
     while True:
 
-        try:
+         try:
 
+###############################################################################
+############################ INTENTO CONECCION ARDUINO######################### 
+###############################################################################
             if conectarUM:
                  sock_blu = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
                  # me conecto
@@ -89,94 +95,133 @@ def UMhandler(bd_addr,device,adapter,port,conn):
                  sock_blu.send('S')
                  conectarUM = False
                  tInicio = time.time()
-
-            readable,writable,excepts=select([conn],[],[], 1 )
+###############################################################################
+############################ COMUNICACION MAIN ################################ 
+###############################################################################
+            readable,writable,excepts=select([conn],[],[], 0.01)
             if conn in readable:
                     print device+': Se recibio msj en tuberia:'
                     msj = conn.recv()
-                    if msj=='fin':
-                        sock_blu.close()
-                        conn.close()
-                        print device+': Fin del Ordenie'
-                        break
-                    else:
-                        caravana = msj
+                    if msj[0]=='FIN':
+                        fin = True
+                    if msj[0]=='CAR':
+                        caravana = msj[1]
 
-            readable,writable,excepts=select([sock_blu],[],[], 1 )
+###############################################################################
+#################### COMUNICACION ARDUINO y HANDLER############################ 
+###############################################################################
+            readable,writable,excepts=select([sock_blu],[],[], 0.01 )
             if sock_blu in readable:
+                print device+': msj recibido from Arduino'
                 #evitar quedarse esperando porque la UM no responde
                 tInicio = time.time()
                 # leer paquete
-                header = sock_blu.recv(1)
-                lb = sock_blu.recv(1)
-                hb = sock_blu.recv(1)
-                dato = float(ord(hb)<<8|ord(lb))
-                #dato = adc_cond(dato)
-                if (header==0):
-                    cond1.append(dato)
-                    print ('conductividad 1 es ',dato)
-                else:
-                    if (header==1):
-                        cond2.append(dato)
-                        print ('conductividad 2 es ',dato)
-                    else:
-                            if (header==2):
-                                cond3.append(dato)
-                                print ('conductividad 3 es ',dato)
-                            else:
-                                if (header==3):
-                                    cond4.append(dato)
-                                    print ('conductividad 4 es ',dato)
-                                else:
-                                    temp.append(dato)
-                                    print ('temperatura es ',dato)
-                if len(cond1)>9 and hayFlujo():
-                    print 'EN ORDENIE'
-                    if not ordenie:
-                        med1 = []
-                        med2 = []
-                        med3 = []
-                        med4 = []
-                        med5 = []
-                    med1.append(cond1[-1])
-                    med2.append(cond2[-1])
-                    med3.append(cond3[-1])
-                    med4.append(cond4[-1])
-                    med5.append(temp[-1])
-                    ordenie = True
-                else:
-                    print 'NO ORDENIE'
-                    print ordenie
-                    if ordenie:
-                        datos = np.array([med1,med2,med3,med4,med5])
-                        datos = datos.T
-                        datos = datos
-                        np.savetxt('Datos/Vaca_'+device+'_'+str(vacasOrd)+'_'+caravana+'.txt',datos,header='C1    C2   C3     C4      T',delimiter=' ',fmt ='%2.2f')
-                        vacasOrd = vacasOrd+1
-                        ordenie = False
-                        cond1 = cond1[-9:]
-                        cond2 = cond2[-9:]
-                        cond3 = cond3[-9:]
-                        cond4 = cond4[-9:]
-                        temp = temp[-9:]
 
+                inicio = sock_blu.recv(1)
+                if (inicio=='I'):
+                            dato = []
+                            payload = []
+                            for i in range(10):
+                                payload.append( sock_blu.recv(1))
+
+                            for j in [0,2,4,6,8]:
+                                lb = payload[j]
+                                hb = payload[j+1]
+                                dato.append(float(ord(hb)<<8|ord(lb)))
+                            cond1.append(adc_cond(dato[0]))
+                            print 'cond1 es ',cond1[-1]
+                            cond2.append(adc_cond(dato[1]))
+                            print 'cond2 es ',cond2[-1]
+                            cond3.append(adc_cond(dato[2]))
+                            print 'cond3 es ',cond3[-1]
+                            cond4.append(adc_cond(dato[3]))
+                            print 'cond4 es ',cond4[-1]
+                            temp.append(adc_temp(dato[4]))
+                            print 'temp es ',temp[-1]
+                
+###############################################################################
+#########################Manejo de datos recibido por arduino##################
+###############################################################################
+                            
+                            if len(cond1)>9:
+                                if hayFlujo():
+                                        #inicio de ordenie
+                                        if not ordenie:
+                                            ordenie = True
+                                            med1 = cond1[-10:]
+                                            med2 = cond2[-10:]
+                                            med3 = cond3[-10:]
+                                            med4 = cond4[-10:]
+                                            med5 = temp[-10:]
+                                            conn.send([device,'ORD'])
+                                            print 'EN ORDENIE'
+                                        else:
+                                            #estoy en medio de ordenie
+                                            med1.append(cond1[-1])
+                                            med2.append(cond2[-1])
+                                            med3.append(cond3[-1])
+                                            med4.append(cond4[-1])
+                                            med5.append(temp[-1])
+                                            
+                                        
+                                else:
+                                        
+                                        #comienzo de no ordenie
+                                        if ordenie:
+                                            print 'NO ORDENIE'
+                                            conn.send([device,'NOORD'])
+                                            datos = np.array([med1,med2,med3,med4,med5])
+                                            datos = datos.T
+                                            datos = datos
+                                            #no se ingresa caravana
+                                            if len(caravana)>1:
+                                                string = str(vacasOrd)+'_'+caravana
+                                            else:
+                                                string = str(vacasOrd)
+                                            np.savetxt('Datos/Vaca_'+device+'_'+string+'.txt',datos,header='C1    C2   C3     C4      T',delimiter=' ',fmt ='%2.2f')
+                                            vacasOrd = vacasOrd+1
+                                            ordenie = False
+                                            cond1 = cond1[-10:]
+                                            cond2 = cond2[-10:]
+                                            cond3 = cond3[-10:]
+                                            cond4 = cond4[-10:]
+                                            temp = temp[-10:]
+                                            #borro caravana
+                                            caravana = [0]
+###############################################################################
+#########################FINALIZO SISTEMA######################################
+###############################################################################
+
+            if (fin and not ordenie):
+                        sock_blu.close()
+                        conn.send([device,'ACK'])
+                        conn.close()
+                        print device+': Fin del Ordenie'
+                        
+                        break
+
+###############################################################################
+############################ SE CALLO ARDUINO? ################################ 
+###############################################################################
             tFinal = time.time()
             if (tFinal-tInicio)>timeOut:
                 conn.send([device,'timeOut'])
                 print device + ': timeOut'
                 break
 
+###############################################################################
+############################ NO SE PUDO ESTABLECER COM ARDUINO ################ 
+###############################################################################
             if intentosConeccion>maxIntentos:
                 conn.send([device,'MaxIntentos'])
                 conn.close()
                 sock_blu.close()
                 print device+': limites de reintentos de coneccion alcanzado'
                 break
-
-
-        except IOError:
-            print device+': Error de establecimiento de coneccion'
-            intentosConeccion = intentosConeccion+1
-            time.sleep(5)
-            conectarUM= True
-
+#==============================================================================
+         except IOError:
+             print device+': Error de establecimiento de coneccion'
+             intentosConeccion = intentosConeccion+1
+             conectarUM= True
+             time.sleep(1)
+#==============================================================================

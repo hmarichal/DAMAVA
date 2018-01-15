@@ -167,9 +167,7 @@ while True:
                 sock.close()
                 break
 
-    except IOError:
-       print 'Error'
-       conectar = True
+
 
 
 

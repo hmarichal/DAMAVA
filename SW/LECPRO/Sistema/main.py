@@ -15,7 +15,7 @@ import time
 def adaptador(lista):
     tarjeta,dongle = [],[]
     for p in lista:
-        if int(p[1][2:])>7:
+        if int(p[1][2:])<6:
             dongle.append(p)
         else:
             tarjeta.append(p)
@@ -58,47 +58,63 @@ if __name__ == '__main__':
     
     #proceso paralelo para atender el movil
     parent_conn,child_conn = multiprocessing.Pipe()
-    servidorMovil = multiprocessing.Process(target=servidorM.servidorMovil,args=(child_conn,macTarjeta))
-    
+    servidorMovil = multiprocessing.Process(target=servidorM.servidorMovil,args=(child_conn,macDongle))
+    servidorMovil.start()
+    init = time.time()
+
+    msj = parent_conn.recv()
+    end = time.time()
+    print 'Movil demoro en responder (seg): ',end-init
     for p in procesos:
         procesos[p][0].start()
     
     if len(procesos)== 0:
         quit()
-    
     while True:
         try:
-            ######################################################
-            #miro si hay algo en las tuberias de las UMs
+            ###################################################################
+            #######miro si hay algo en las tuberias de las UMs#################
             index = []
             for i in procesos:
                 # se utiliza select para evitar tener que esperar
                 readable,writable,excepts=select([procesos[i][1]],[],[], 1 )
                 if procesos[i][1] in readable:
                     msj = procesos[i][1].recv()
+                    
                     #avisar a celular
                     print 'main: Se recibio el siguiente msj: '+msj[1]+' de '+msj[0]
                     parent_conn.send(msj)
-                    #finalizar proceso
-                    procesos[i][0].terminate()
-                    procesos[i][1].close()
-                    index.append(i)
+
+                    #finalizar proceso si corresponde
+                    if (msj[1]=='ACK' or msj[1]=='timeOut'or msj[1]=='MaxIntentos'):
+                        procesos[i][0].terminate()
+                        procesos[i][1].close()
+                        index.append(i)
+                        
             for i in index:
                 del procesos[i]
             
+            
             if len(procesos)==0:
-                parent_con.send('UMs finalizaron')
+                break
             
             readable,writable,excepts=select([parent_conn],[],[], 1 )
             if parent_conn in readable:
                 msj = parent_conn.recv()
                 if msj[0] == 'fin':
-                    
+                    for i in procesos:
+                        procesos[i][1].send(['FIN',0])
+                if msj[0][:2] == 'UM':
+                    procesos[msj[0]][1].send(['CAR',msj[1][4:9]])
     
         except KeyboardInterrupt:
-            print 'main: Interrupcion '+str(interrupciones)
-            enviar = True
-            interrupciones = interrupciones+1
+            for i in procesos:
+                procesos[i][0].terminate()
+                procesos[i][1].close()
+            servidorMovil.terminate()
+            parent_conn.close()
+            break
+            
 #==============================================================================
 
          
