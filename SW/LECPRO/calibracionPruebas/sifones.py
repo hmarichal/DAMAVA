@@ -156,7 +156,7 @@ while True:
                 datos = np.array([med1,med2,med3,med4,med5])
                 datos = datos.T
                 datos = datos
-                np.savetxt('Datos/Vaca_'+str(port)+'_'+str(contador)+'.txt',datos,header='C1    C2   C3     C4      T',delimiter=' ',fmt ='%2.2f')
+                np.savetxt('Datos/Vaca_'+str(port)+'_'+str(contador)+'.txt',datos,delimiter=' ',fmt ='%2.2f')
                 contador = contador+1
                 ordenie = False
                 cond1 = cond1[-9:]

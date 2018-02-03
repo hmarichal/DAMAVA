@@ -17,7 +17,7 @@ import servidorM
 def adaptador(lista):
     tarjeta,dongle = [],[]
     for p in lista:
-        if int(p[1][2:])<6:
+        if int(p[1][2:])>6:
             dongle.append(p)
         else:
             tarjeta.append(p)
@@ -61,14 +61,14 @@ if __name__ == '__main__':
             port= port+1
     
     #proceso paralelo para atender el movil
-    parent_conn,child_conn = multiprocessing.Pipe()
-    servidorMovil = multiprocessing.Process(target=servidorM.servidorMovil,args=(child_conn,macTarjeta))
-    servidorMovil.start()
-    init = time.time()
+    #parent_conn,child_conn = multiprocessing.Pipe()
+    #servidorMovil = multiprocessing.Process(target=servidorM.servidorMovil,args=(child_conn,macRpi))
+    #servidorMovil.start()
+    #init = time.time()
 
-    msj = parent_conn.recv()
-    end = time.time()
-    print 'Movil demoro en responder (seg): ',end-init
+    #msj = parent_conn.recv()
+    #end = time.time()
+    #print 'Movil demoro en responder (seg): ',end-init
     for p in procesos:
         procesos[p][0].start()
     
@@ -103,22 +103,22 @@ if __name__ == '__main__':
             if len(procesos)==0:
                 break
             
-            readable,writable,excepts=select([parent_conn],[],[], 1 )
-            if parent_conn in readable:
-                msj = parent_conn.recv()
-                if msj[0] == 'fin':
-                    for i in procesos:
-                        procesos[i][1].send(['FIN',0])
-                if msj[0][:2] == 'UM':
-                    procesos[msj[0]][1].send(['CAR',msj[1][4:9]])
-                if msj[0] == 'cantidad':
-                    procesos[msj[1][:3]][1].send(['Cantidad',0])
+            #readable,writable,excepts=select([parent_conn],[],[], 1 )
+            #if parent_conn in readable:
+            #    msj = parent_conn.recv()
+            #    if msj[0] == 'fin':
+            #        for i in procesos:
+            #            procesos[i][1].send(['FIN',0])
+            #    if msj[0][:2] == 'UM':
+            #        procesos[msj[0]][1].send(['CAR',msj[1][4:9]])
+            #    if msj[0] == 'cantidad':
+            #        procesos[msj[1][:3]][1].send(['Cantidad',0])
         except KeyboardInterrupt:
             for i in procesos:
                 procesos[i][0].terminate()
                 procesos[i][1].close()
-            servidorMovil.terminate()
-            parent_conn.close()
+            #servidorMovil.terminate()
+            #parent_conn.close()
             break
             
 #==============================================================================

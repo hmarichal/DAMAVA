@@ -45,7 +45,7 @@ def adc_temp(dato):
 
 
 global umbral
-umbral = 0
+umbral = 30
 global ordenie
 ordenie = False
 global cond1
