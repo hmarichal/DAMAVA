@@ -1,0 +1,36 @@
+por intuicion:
+car = [0,1,7,13,17]
+presicion 70.08 +- 7.39
+recall 60.91 +- 3.36
+fvalue 64.99 +- 4.29
+
+========================================================================
+RF mayores a 0.05
+
+[ 1,  2,  7,  8,  9, 10, 12, 15, 16, 18]
+
+presicion 60.18 +- 3.65
+recall 59.55 +- 3.78
+fvalue 59.82 +- 3.34 
+
+RF mayores a 0.06
+
+[ 1  7  8  9 18]
+
+presicion 58.35 +- 4.69
+recall 53.64 +- 4.90
+fvalue 55.74 +- 3.83 
+
+
+RF mayores a 0.07
+
+[ 7  8  9]
+
+presicion 51.68 +- 4.47
+recall 45 +- 3.78
+fvalue 48.06 +- 3.86 
+
+
+========================================================================
+la seleccion de caracteristicas de manera recursiva mejora la estimacion. El problema es porque el segundo gridserch
+da mal.

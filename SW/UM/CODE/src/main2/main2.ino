@@ -29,7 +29,7 @@ void loop() {
       Serial.print("Conductividad del Cuarto ");Serial.print(ticks);Serial.print(" es ");Serial.println(cond);
       lb = (cond&0x00FF);
       hb = (cond>>8)&0x00FF;
-      hc05.write(ticks);
+      
       hc05.write(lb);
       hc05.write(hb);
 
@@ -41,7 +41,7 @@ void loop() {
         
         lb = (temp&0x00FF);
         hb = (temp>>8)&0x00FF;
-        hc05.write('t');
+      
         hc05.write(lb);
         hc05.write(hb);
 

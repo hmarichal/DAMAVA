@@ -208,7 +208,7 @@ def UMhandler(bd_addr,device,adapter,port,conn):
                                             datos = datos
                                             #no se ingresa caravana
                                             if len(caravana)>1:
-                                                string = str(vacasOrd)+'_'+caravana
+                                                string = str(vacasOrd)+'_'+caravana+'_'
                                             else:
                                                 string = str(vacasOrd)
                                             np.savetxt('Datos/Vaca_'+device+'_'+string+str(datetime.datetime.now())+'.txt',datos,delimiter=' ',fmt ='%2.2f')

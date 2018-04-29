@@ -17,7 +17,7 @@ import servidorM
 def adaptador(lista):
     tarjeta,dongle = [],[]
     for p in lista:
-        if int(p[1][2:])<6:
+        if int(p[1][2:])<10:
             dongle.append(p)
         else:
             tarjeta.append(p)

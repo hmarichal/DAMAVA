@@ -16,19 +16,20 @@ void setup() {
   Timer_Init();
   Timer_SetFlag(&flagTimer);
   Mux_SeleccionarCuarto(0);
-  Serial.begin(38400);
+  Serial.begin(9600);
   hc05.flush();
   delay(500);
-  hc05.begin(38400);
-
+  hc05.begin(9600);
+  Serial.println("Inicio de sistema UM");
 }
 
 void loop() {
 
   if ((flagTimer)and(comenzar)){
+      
       flagTimer = 0;
       
-      
+      //Serial.println("dentro del loop");
       ticks++;
       cond = analogRead(A1);
       buff[ticks] = cond;
@@ -38,15 +39,21 @@ void loop() {
         ticks=-1;
         temp = analogRead(A0);
         buff[4] = temp;
+        Serial.println("========================================================================================");
         SendBuff(buff);
+        
+        Serial.println("========================================================================================");
       }
+      
       
 
       
     }
     if (hc05.available()){
-      switch(hc05.read()){
-        case 'S':{
+      char c = hc05.read();
+      Serial.println(c);
+      switch(c){
+        case 'S':{//desabilitar interrupciones timer
           comenzar = true;
           break;
           }
@@ -65,7 +72,10 @@ void loop() {
 void SendBuff(int buff[]){
   unsigned char lb,hb;
   hc05.write('I');
-  for(char j;j<5;j++){
+  for(int j;j<5;j++){
+        if (j<4){
+          Serial.print("Conductividad ");Serial.print(j);Serial.print("es ");Serial.println(buff[j]);
+        }
         lb = (buff[j]&0x00FF);
         hb = (buff[j]>>8)&0x00FF;
         hc05.write(lb);
