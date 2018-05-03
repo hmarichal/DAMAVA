@@ -21,13 +21,13 @@ def servidorMovil(conn,mac):
         try:
             if conectar:
                     client_sock,client_info = server_sock.accept()
-                    print "Accepted connection form", client_info
+                    print ("Accepted connection form", client_info)
                     client_sock.send("Lecpro Server Says Hello\nComandos:\n     'START':comienza ordenie\n     'FIN':fin de ordenie\n     'CAR':caravana vaca\n   'CANTIDAD UMX': devuelve la cantidad de vacas ordenieadas hasta el momento siendo X la UM que lo pide\n")
                     conectar = False
             readable,writable,excepts=select([client_sock],[],[], 1 )
             if client_sock in readable:
                 data = client_sock.recv(13)
-                print 'servidorMovil: recibio ',data
+                print ('servidorMovil: recibio ',data)
                 if data[:3]=='CAR':
                     string = data[10:]
                     datos = data[4:9]
@@ -62,6 +62,6 @@ def servidorMovil(conn,mac):
 
                 
         except IOError:
-            print 'movil: Error de establecimiento de coneccion'
+            print('movil: Error de establecimiento de coneccion')
             conectar = True
 

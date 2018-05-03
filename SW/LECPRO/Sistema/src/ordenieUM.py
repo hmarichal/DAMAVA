@@ -13,7 +13,7 @@ from select import*
 import datetime
 
 global umbral
-umbral = 30
+umbral = 50
 global maxIntentos
 maxIntentos = 20
 global ordenie
@@ -171,7 +171,6 @@ def UMhandler(bd_addr,device,adapter,port,conn):
                             print 'cond4 es ',cond4[-1]
                             temp.append(adc_temp(dato[4]))
                             print 'temp es ',temp[-1]
-                
 ###############################################################################
 #########################Manejo de datos recibido por arduino##################
 ###############################################################################
@@ -198,7 +197,6 @@ def UMhandler(bd_addr,device,adapter,port,conn):
                                             
                                         
                                 else:
-                                        
                                         #comienzo de no ordenie
                                         if ordenie:
                                             print 'NO ORDENIE'
@@ -222,15 +220,6 @@ def UMhandler(bd_addr,device,adapter,port,conn):
                                             #borro caravana
                                             caravana = [0]
 
-
-###############################################################################
-############################ SE CALLO ARDUINO? ################################ 
-###############################################################################
-#            tFinal = time.time()
-#            if (tFinal-tInicio)>timeOut:
-#                conn.send([device,'timeOut'])
-#                print device + ': timeOut'
-#                break
 
 ###############################################################################
 ############################ NO SE PUDO ESTABLECER COM ARDUINO ################ 
