@@ -1,3 +1,10 @@
 #0: paired pc
-#1: paired dongle
-3C:A1:0D:DD:97:8F,0	#celularUtil
+#1: paired dongle 
+#3C:A1:0D:DD:97:8F,0	#celularUtil
+#00:21:13:01:0D:CD,0 #UM3
+#00:21:13:01:0B:EC,0 #UM5
+00:21:13:01:11:12,0 #UM9
+#00:21:13:01:11:BF,0 #UM7
+00:21:13:01:0F:62,0 #UM4
+00:21:13:01:0C:6F,0 #UM8 
+00:21:13:01:0C:A6,0 #UM6

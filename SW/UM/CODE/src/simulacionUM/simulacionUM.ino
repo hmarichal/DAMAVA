@@ -3,7 +3,11 @@
 
 #define MAX_BUFFER 500
 
-SoftwareSerial hc05(10,11);
+SoftwareSerial hc051(8,9);
+SoftwareSerial hc052(10,11);
+SoftwareSerial hc053(12,13);
+SoftwareSerial hc054(6,7);
+
 int flagTimer,ticks,cond,temp;
 unsigned char ind;
 boolean comenzar = false;
@@ -15,16 +19,29 @@ void setup() {
   Timer_Init();
   Timer_SetFlag(&flagTimer);
   Serial.begin(38400);
-  hc05.flush();
+  hc051.flush();
   delay(500);
-  hc05.begin(38400);
-  for(i=7;i<MAX_BUFFER-400;i++){
+  hc051.begin(38400);
+
+  hc052.flush();
+  delay(500);
+  hc052.begin(38400);
+
+  hc053.flush();
+  delay(500);
+  hc053.begin(38400);
+
+  hc054.flush();
+  delay(500);
+  hc054.begin(38400);
+  
+  for(i=7;i<MAX_BUFFER-40;i++){
       bufferArt[i] =i;
   }
 }
 
 void loop() {
-  if ((flagTimer)and(comenzar)){
+  if ((flagTimer)){
       flagTimer = 0;
       cond = bufferArt[ind];
       ticks++;
@@ -50,8 +67,9 @@ void loop() {
       }
       
     }
-  if (hc05.available()){
-      char c = hc05.read();
+
+  if (hc051.available()){
+      char c = hc051.read();
       Serial.print("Se recibio el comando: ");
       Serial.write(c);
       switch(c){
@@ -67,15 +85,45 @@ void loop() {
       }
   }
 
+
+
+
 }
 
 void SendBuff(int buff[]){
   unsigned char lb,hb;
-  hc05.write('I');
+  hc051.write('I');
+
   for(char j;j<5;j++){
         lb = (buff[j]&0x00FF);
         hb = (buff[j]>>8)&0x00FF;
-        hc05.write(lb);
-        hc05.write(hb);
+        hc051.write(lb);
+        hc051.write(hb);
+  }
+
+  hc052.write('I');
+
+  for(char j;j<5;j++){
+        lb = (buff[j]&0x00FF);
+        hb = (buff[j]>>8)&0x00FF;
+        hc052.write(lb);
+        hc052.write(hb);
+  }
+
+  hc053.write('I');
+
+  for(char j;j<5;j++){
+        lb = (buff[j]&0x00FF);
+        hb = (buff[j]>>8)&0x00FF;
+        hc053.write(lb);
+        hc053.write(hb);
+  }
+  hc054.write('I');
+
+  for(char j;j<5;j++){
+        lb = (buff[j]&0x00FF);
+        hb = (buff[j]>>8)&0x00FF;
+        hc054.write(lb);
+        hc054.write(hb);
   }
 }

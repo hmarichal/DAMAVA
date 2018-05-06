@@ -1,6 +1,0 @@
-deteccion de mastitits
-			visual: 
-				tambero identifica
-				sustancia que se le agrega a la leche que hace que cambie de color
-			sensor:conductividad de la leche
-			paper: monitoreo de celulas somaticas. No automatico. Analisis realizado en laboratorio.

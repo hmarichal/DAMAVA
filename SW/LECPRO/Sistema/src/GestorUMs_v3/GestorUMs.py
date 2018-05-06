@@ -39,40 +39,52 @@ import time
 import os
 import datetime
 
+import src.procesamiento as procesamiento
+import src.BluetoothRFcomm as comm 
+
 macTarjeta = "E4:A4:71:6D:DE:BC"
 macDongle = "00:1F:81:00:08:30"
 macRpi = "B8:27:EB:6E:D1:F6"
 target_name = "UM"
 target_address = None
-filenameCLF = '../Modelos/modelo_1_0.sav'
+filenameCLF = 'Modelos/modelo_1_0.sav'
 #direcciones mac de los adaptadores
 
 global TAM
 TAM = 10
+umbral = 50
 
+class myThread (threading.Thread):
+   def __init__(self, name, counter):
+      threading.Thread.__init__(self)
+#      multiprocessing.Process.__init__(self)
+      self.name = name
+      self.counter = counter
+   def run(self):
+      print ("Starting " + self.name)
+      UMhandler(self.name,self.counter)
+      print ("Exiting " + self.name)
 
 def gestorDeUMs(conn):
     global finOrdenie,clf,filenameCLF,macDongle,macTarjeta
     #busco por dispositivos bluetooth cercanos
-    dispositivos = []
-    print(nearby_devices)
-    print("Iniciando Gestor")
-
-    #los asigno segun con que adaptador fueron paired
-    tarjeta,dongle = dispositivos()
-    
-    print("tarjeta ",tarjeta)
-    print("dongle ",dongle)
+    tarjeta,dongle = comm.dispositivos()
     # genero threads paralelos para atender cada UM
-    threads = {}
-    port=1
+    threads = []
+    port=0
+#    UMhandler(tarjeta[int(sys.argv[1])],sys.argv[2])
     for bd_addr in tarjeta:
-            threads[device[1]] = threading.Thread(target=UMhandler(macTarjeta,bd_addr,port))
+            t = myThread(bd_addr,port)
+            threads.append(t)
+            t.start()
+            print(bd_addr)
             port= port+1
+#            time.sleep(1)
+
     finOrdenie = False
          
     # cargar modelo
-    clf = load_modelo(filenameCLF)
+    clf = procesamiento.load_modelo(filenameCLF)
     for p in threads:
         threads[p].start()
     while True:
@@ -91,10 +103,10 @@ def gestorDeUMs(conn):
         threads[device].join()
 
 
-def UMhandler(adapter,bd_addr,port):
-    filenameLog = str(port)+"_"+str(datetime.datetime.now())+".log"
+def UMhandler(bd_addr,port):
+    filenameLog = str(bd_addr)+"_"+str(datetime.datetime.now())+".log"
     log(str(port)+"\n",filenameLog)
-    def hayPaquete():
+    def hayPaquete(sock_blu):
         nonlocal filenameLog
         readable,writable,excepts = select([sock_blu],[],[], 2 )#timeOut de 2 segundos
         dato = []
@@ -102,14 +114,14 @@ def UMhandler(adapter,bd_addr,port):
             log('Nuevo Dato\n',filenameLog)
             payload = []
             # leer paquete
-            inicio = sock_blu.recv(1)
-            if (inicio=='I'):
+            inicio = sock_blu.read(1)
+            if (inicio==b'I'):
                 log('Paquete valido\n',filenameLog)
                 payload = []
                 for i in range(10):
                     readable,writable,excepts=select([sock_blu],[],[], 2 )#timeOut de 2 segundos
                     if sock_blu in readable:
-                        payload.append( sock_blu.recv(1))
+                        payload.append( sock_blu.read(1))
                     else:
                         break
                 #se recibe paquete completo?
@@ -122,17 +134,17 @@ def UMhandler(adapter,bd_addr,port):
         return dato
     def writeDataNewCow(newData,filename):
         file = open(filename,"a")
-        writelines(newData)
+        file.writelines(newData)
         file.close()
     def procesarPaquete(nuevoDato):
-        nonlocal indStack,stackDatos,EnOrdenie,filename
+        nonlocal indStack,stackDatos,EnOrdenie,filename,bd_addr,port
         stackDatos[indStack,:] = nuevoDato
         indStack = (indStack + 1)%TAM
         finVaca = False
         if ( hayFlujo(EnOrdenie,stackDatos,indStack) ):
             if not EnOrdenie :
                 EnOrdenie = True
-                filename = path + str(datetime.datetime.now())
+                filename = path +"UM"+ str(port)+"_"+str(datetime.datetime.now())
             stringDato =  str(nuevoDato[0])+","+str(nuevoDato[1])+","+str(nuevoDato[2])+","+str(nuevoDato[3])+","+str(nuevoDato[4])+"\n"
             writeDataNewCow(stringDato,filename)
         else:
@@ -142,6 +154,7 @@ def UMhandler(adapter,bd_addr,port):
         return finVaca
 
     def hayFlujo(ordenie,stackDatos,indStack):
+        global umbral,TAM
         resultado1 = True
         resultado2 = True
         resultado3 = True
@@ -165,35 +178,33 @@ def UMhandler(adapter,bd_addr,port):
     EnOrdenie = False
     finVaca = False
     filename = ""
-    path = "Datos/"+str(port)+"_"
+    path = "Datos/"
     while True:
         try:                        
             if conectarUM:
-                 sock_blu = BluetoothRFcomm(adapter,bd_addr,port)
+                 blu = comm.BluetoothRFcomm(bd_addr,"rfcomm"+str(port))
                  # me conecto
-                 sock_blu.bind()
-                 sock_blu.connect()
+                 blu.bind()
+                 sock_blu=blu.connect()
                  log('Coneccion establecida\n',filenameLog)
-                 intentosConeccion=0
                  time.sleep(1)
-                 sock_blu.send('S')
-                 conn.send([str(port),'Conectada'])
+                 sock_blu.write(b'S')
                  conectarUM = False
 
-            dato = hayPaquete()
-            if ( len( dato > 0 ) ):
+            dato = hayPaquete(sock_blu)
+            if ( len( dato) > 0  ):
                 finVaca = procesarPaquete(dato)
             if finVaca:
                 finVaca = False
                 series = np.genfromtxt(filename,dtype=float)
-                caracteristicas = transformacionCaracteristicas(series)
+                caracteristicas = procesamiento.transformacionCaracteristicas(series)
                 pred = clf.predict(caracteristicas)
                 if pred == 1:
                     #tiene mastitis
-                    sock_blu.send('1')
+                    sock_blu.write('1')
                 else:
                     #no tiene mastitis
-                    sock_blu.send('0')
+                    sock_blu.write('0')
                 if finOrdenie:
                     sock_blu.close()
                     break
@@ -202,11 +213,12 @@ def UMhandler(adapter,bd_addr,port):
             conectarUM= True
             time.sleep(1)
         except KeyboardInterrupt:
+            sock_blu.close()
             break
             
 
 def log(texto,filename):
-    path = "../logs/"
+    path = "logs/"
     file = open(path+filename,"a")
     file.writelines(texto)
     file.close()

@@ -1,7 +1,0 @@
-\select@language {spanish}
-\contentsline {section}{\numberline {1}Evaluation of measurements of the conductivity of quarter milk samples for the early diagnosis of mastitis}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}Materiales y M\IeC {\'e}todos}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Conteo de c\IeC {\'e}lulas som\IeC {\'a}ticas}{1}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}An\IeC {\'a}lisis de datos}{1}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Ocurrencia de \emph {triggers}}{2}{subsection.1.4}
-\contentsline {subsection}{\numberline {1.5}\emph {Triggers} y conteo de C\IeC {\'e}lulas Som\IeC {\'a}ticas}{2}{subsection.1.5}

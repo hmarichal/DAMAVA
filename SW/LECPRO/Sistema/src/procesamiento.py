@@ -1,3 +1,6 @@
+import os
+import numpy as np
+import pickle
 
 def maxEC(sensor,cuarto):
     medias = np.mean(sensor,axis=0)
