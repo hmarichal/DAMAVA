@@ -13433,3 +13433,2091 @@
 
 2018-05-06 13:55:36.194466: <class 'serial.serialutil.SerialException'>
 
+2018-05-06 13:55:37.697308: handlerConectar()
+
+
+2018-05-06 13:55:37.698614: handlerFinVaca()
+
+
+2018-05-06 13:55:37.699648: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:38.197610: handlerConectar()
+
+
+2018-05-06 13:55:38.200006: handlerFinVaca()
+
+
+2018-05-06 13:55:38.201480: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:39.705243: handlerConectar()
+
+
+2018-05-06 13:55:39.710526: handlerFinVaca()
+
+
+2018-05-06 13:55:39.713450: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:40.205847: handlerConectar()
+
+
+2018-05-06 13:55:40.208447: handlerFinVaca()
+
+
+2018-05-06 13:55:40.210240: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:41.718431: handlerConectar()
+
+
+2018-05-06 13:55:41.721293: handlerFinVaca()
+
+
+2018-05-06 13:55:41.721684: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:42.215013: handlerConectar()
+
+
+2018-05-06 13:55:42.217692: handlerFinVaca()
+
+
+2018-05-06 13:55:42.218838: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:43.726447: handlerConectar()
+
+
+2018-05-06 13:55:43.729289: handlerFinVaca()
+
+
+2018-05-06 13:55:43.729767: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:44.223299: handlerConectar()
+
+
+2018-05-06 13:55:44.225307: handlerFinVaca()
+
+
+2018-05-06 13:55:44.226836: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:45.735699: handlerConectar()
+
+
+2018-05-06 13:55:45.739283: handlerFinVaca()
+
+
+2018-05-06 13:55:45.741990: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:46.230466: handlerConectar()
+
+
+2018-05-06 13:55:46.232517: handlerFinVaca()
+
+
+2018-05-06 13:55:46.234463: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:47.748767: handlerConectar()
+
+
+2018-05-06 13:55:47.751514: handlerFinVaca()
+
+
+2018-05-06 13:55:47.752771: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:48.238496: handlerConectar()
+
+
+2018-05-06 13:55:48.240936: handlerFinVaca()
+
+
+2018-05-06 13:55:48.242763: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:49.755415: handlerConectar()
+
+
+2018-05-06 13:55:49.755663: handlerFinVaca()
+
+
+2018-05-06 13:55:49.755799: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:50.245201: handlerConectar()
+
+
+2018-05-06 13:55:50.245393: handlerFinVaca()
+
+
+2018-05-06 13:55:50.245569: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:51.761346: handlerConectar()
+
+
+2018-05-06 13:55:51.763674: handlerFinVaca()
+
+
+2018-05-06 13:55:51.764464: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:52.248624: handlerConectar()
+
+
+2018-05-06 13:55:52.250240: handlerFinVaca()
+
+
+2018-05-06 13:55:52.251494: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:53.770197: handlerConectar()
+
+
+2018-05-06 13:55:53.771443: handlerFinVaca()
+
+
+2018-05-06 13:55:53.771994: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:54.254253: handlerConectar()
+
+
+2018-05-06 13:55:54.256739: handlerFinVaca()
+
+
+2018-05-06 13:55:54.258217: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:55.775567: handlerConectar()
+
+
+2018-05-06 13:55:55.778027: handlerFinVaca()
+
+
+2018-05-06 13:55:55.778606: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:56.259559: handlerConectar()
+
+
+2018-05-06 13:55:56.260832: handlerFinVaca()
+
+
+2018-05-06 13:55:56.262186: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:57.782990: handlerConectar()
+
+
+2018-05-06 13:55:57.786654: handlerFinVaca()
+
+
+2018-05-06 13:55:57.787183: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:58.266897: handlerConectar()
+
+
+2018-05-06 13:55:58.269996: handlerFinVaca()
+
+
+2018-05-06 13:55:58.271510: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:55:59.790962: handlerConectar()
+
+
+2018-05-06 13:55:59.794263: handlerFinVaca()
+
+
+2018-05-06 13:55:59.797053: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:00.275819: handlerConectar()
+
+
+2018-05-06 13:56:00.277984: handlerFinVaca()
+
+
+2018-05-06 13:56:00.279047: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:01.802086: handlerConectar()
+
+
+2018-05-06 13:56:01.804254: handlerFinVaca()
+
+
+2018-05-06 13:56:01.804999: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:02.282738: handlerConectar()
+
+
+2018-05-06 13:56:02.284800: handlerFinVaca()
+
+
+2018-05-06 13:56:02.285979: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:03.809494: handlerConectar()
+
+
+2018-05-06 13:56:03.813188: handlerFinVaca()
+
+
+2018-05-06 13:56:03.814964: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:04.288613: handlerConectar()
+
+
+2018-05-06 13:56:04.289056: handlerFinVaca()
+
+
+2018-05-06 13:56:04.289367: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:05.817441: handlerConectar()
+
+
+2018-05-06 13:56:05.818236: handlerFinVaca()
+
+
+2018-05-06 13:56:05.818684: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:06.292515: handlerConectar()
+
+
+2018-05-06 13:56:06.294714: handlerFinVaca()
+
+
+2018-05-06 13:56:06.296536: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:07.821203: handlerConectar()
+
+
+2018-05-06 13:56:07.822709: handlerFinVaca()
+
+
+2018-05-06 13:56:07.825808: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:08.299953: handlerConectar()
+
+
+2018-05-06 13:56:08.302414: handlerFinVaca()
+
+
+2018-05-06 13:56:08.304786: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:09.828728: handlerConectar()
+
+
+2018-05-06 13:56:09.829530: handlerFinVaca()
+
+
+2018-05-06 13:56:09.830413: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:10.309615: handlerConectar()
+
+
+2018-05-06 13:56:10.310925: handlerFinVaca()
+
+
+2018-05-06 13:56:10.311394: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:11.833469: handlerConectar()
+
+
+2018-05-06 13:56:11.835042: handlerFinVaca()
+
+
+2018-05-06 13:56:11.836123: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:12.313536: handlerConectar()
+
+
+2018-05-06 13:56:12.314104: handlerFinVaca()
+
+
+2018-05-06 13:56:12.314501: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:13.837800: handlerConectar()
+
+
+2018-05-06 13:56:13.838911: handlerFinVaca()
+
+
+2018-05-06 13:56:13.839693: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:14.316699: handlerConectar()
+
+
+2018-05-06 13:56:14.317034: handlerFinVaca()
+
+
+2018-05-06 13:56:14.317238: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:15.841550: handlerConectar()
+
+
+2018-05-06 13:56:15.843326: handlerFinVaca()
+
+
+2018-05-06 13:56:15.844587: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:16.319609: handlerConectar()
+
+
+2018-05-06 13:56:16.319992: handlerFinVaca()
+
+
+2018-05-06 13:56:16.320253: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:17.847741: handlerConectar()
+
+
+2018-05-06 13:56:17.850147: handlerFinVaca()
+
+
+2018-05-06 13:56:17.856888: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:18.322090: handlerConectar()
+
+
+2018-05-06 13:56:18.324027: handlerFinVaca()
+
+
+2018-05-06 13:56:18.325865: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:19.859701: handlerConectar()
+
+
+2018-05-06 13:56:19.860028: handlerFinVaca()
+
+
+2018-05-06 13:56:19.860209: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:20.328604: handlerConectar()
+
+
+2018-05-06 13:56:20.328890: handlerFinVaca()
+
+
+2018-05-06 13:56:20.329050: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:21.861446: handlerConectar()
+
+
+2018-05-06 13:56:21.861702: handlerFinVaca()
+
+
+2018-05-06 13:56:21.861853: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:22.331778: handlerConectar()
+
+
+2018-05-06 13:56:22.333320: handlerFinVaca()
+
+
+2018-05-06 13:56:22.333619: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:23.864532: handlerConectar()
+
+
+2018-05-06 13:56:23.865589: handlerFinVaca()
+
+
+2018-05-06 13:56:23.865852: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:24.336086: handlerConectar()
+
+
+2018-05-06 13:56:24.337139: handlerFinVaca()
+
+
+2018-05-06 13:56:24.337959: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:25.868124: handlerConectar()
+
+
+2018-05-06 13:56:25.868390: handlerFinVaca()
+
+
+2018-05-06 13:56:25.868561: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:26.340863: handlerConectar()
+
+
+2018-05-06 13:56:26.342606: handlerFinVaca()
+
+
+2018-05-06 13:56:26.343892: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:27.870842: handlerConectar()
+
+
+2018-05-06 13:56:27.873205: handlerFinVaca()
+
+
+2018-05-06 13:56:27.874068: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:28.346995: handlerConectar()
+
+
+2018-05-06 13:56:28.348634: handlerFinVaca()
+
+
+2018-05-06 13:56:28.350262: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:29.877700: handlerConectar()
+
+
+2018-05-06 13:56:29.879033: handlerFinVaca()
+
+
+2018-05-06 13:56:29.879924: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:30.353329: handlerConectar()
+
+
+2018-05-06 13:56:30.356289: handlerFinVaca()
+
+
+2018-05-06 13:56:30.357360: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:31.881209: handlerConectar()
+
+
+2018-05-06 13:56:31.881459: handlerFinVaca()
+
+
+2018-05-06 13:56:31.881644: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:32.360865: handlerConectar()
+
+
+2018-05-06 13:56:32.363327: handlerFinVaca()
+
+
+2018-05-06 13:56:32.365011: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:33.882899: handlerConectar()
+
+
+2018-05-06 13:56:33.883156: handlerFinVaca()
+
+
+2018-05-06 13:56:33.883457: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:34.368998: handlerConectar()
+
+
+2018-05-06 13:56:34.371855: handlerFinVaca()
+
+
+2018-05-06 13:56:34.373804: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:35.887724: handlerConectar()
+
+
+2018-05-06 13:56:35.890131: handlerFinVaca()
+
+
+2018-05-06 13:56:35.891277: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:36.377552: handlerConectar()
+
+
+2018-05-06 13:56:36.379591: handlerFinVaca()
+
+
+2018-05-06 13:56:36.381048: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:37.893419: handlerConectar()
+
+
+2018-05-06 13:56:37.893979: handlerFinVaca()
+
+
+2018-05-06 13:56:37.894406: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:38.384133: handlerConectar()
+
+
+2018-05-06 13:56:38.385214: handlerFinVaca()
+
+
+2018-05-06 13:56:38.385791: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:39.897713: handlerConectar()
+
+
+2018-05-06 13:56:39.898924: handlerFinVaca()
+
+
+2018-05-06 13:56:39.899970: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:40.387712: handlerConectar()
+
+
+2018-05-06 13:56:40.389409: handlerFinVaca()
+
+
+2018-05-06 13:56:40.390879: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:41.903293: handlerConectar()
+
+
+2018-05-06 13:56:41.905600: handlerFinVaca()
+
+
+2018-05-06 13:56:41.906011: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:42.394492: handlerConectar()
+
+
+2018-05-06 13:56:42.396396: handlerFinVaca()
+
+
+2018-05-06 13:56:42.398146: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:43.908783: handlerConectar()
+
+
+2018-05-06 13:56:43.909764: handlerFinVaca()
+
+
+2018-05-06 13:56:43.910509: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:44.402776: handlerConectar()
+
+
+2018-05-06 13:56:44.404339: handlerFinVaca()
+
+
+2018-05-06 13:56:44.405474: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:45.913754: handlerConectar()
+
+
+2018-05-06 13:56:45.914928: handlerFinVaca()
+
+
+2018-05-06 13:56:45.915676: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:46.409216: handlerConectar()
+
+
+2018-05-06 13:56:46.410662: handlerFinVaca()
+
+
+2018-05-06 13:56:46.411647: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:47.917706: handlerConectar()
+
+
+2018-05-06 13:56:47.918638: handlerFinVaca()
+
+
+2018-05-06 13:56:47.919333: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:48.414799: handlerConectar()
+
+
+2018-05-06 13:56:48.416074: handlerFinVaca()
+
+
+2018-05-06 13:56:48.417003: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:49.921706: handlerConectar()
+
+
+2018-05-06 13:56:49.922667: handlerFinVaca()
+
+
+2018-05-06 13:56:49.923415: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:50.419411: handlerConectar()
+
+
+2018-05-06 13:56:50.422205: handlerFinVaca()
+
+
+2018-05-06 13:56:50.424350: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:51.926691: handlerConectar()
+
+
+2018-05-06 13:56:51.929237: handlerFinVaca()
+
+
+2018-05-06 13:56:51.930172: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:52.428004: handlerConectar()
+
+
+2018-05-06 13:56:52.429528: handlerFinVaca()
+
+
+2018-05-06 13:56:52.430689: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:53.934124: handlerConectar()
+
+
+2018-05-06 13:56:53.934664: handlerFinVaca()
+
+
+2018-05-06 13:56:53.934865: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:54.434318: handlerConectar()
+
+
+2018-05-06 13:56:54.435696: handlerFinVaca()
+
+
+2018-05-06 13:56:54.436916: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:55.939098: handlerConectar()
+
+
+2018-05-06 13:56:55.941838: handlerFinVaca()
+
+
+2018-05-06 13:56:55.943277: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:56.440493: handlerConectar()
+
+
+2018-05-06 13:56:56.442037: handlerFinVaca()
+
+
+2018-05-06 13:56:56.442989: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:57.948080: handlerConectar()
+
+
+2018-05-06 13:56:57.951648: handlerFinVaca()
+
+
+2018-05-06 13:56:57.953955: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:58.446399: handlerConectar()
+
+
+2018-05-06 13:56:58.449238: handlerFinVaca()
+
+
+2018-05-06 13:56:58.450575: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:56:59.957805: handlerConectar()
+
+
+2018-05-06 13:56:59.961477: handlerFinVaca()
+
+
+2018-05-06 13:56:59.963119: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:00.454498: handlerConectar()
+
+
+2018-05-06 13:57:00.456689: handlerFinVaca()
+
+
+2018-05-06 13:57:00.457914: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:01.965357: handlerConectar()
+
+
+2018-05-06 13:57:01.968552: handlerFinVaca()
+
+
+2018-05-06 13:57:01.971056: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:02.461250: handlerConectar()
+
+
+2018-05-06 13:57:02.462842: handlerFinVaca()
+
+
+2018-05-06 13:57:02.463865: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:03.974710: handlerConectar()
+
+
+2018-05-06 13:57:03.976738: handlerFinVaca()
+
+
+2018-05-06 13:57:03.978472: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:04.467410: handlerConectar()
+
+
+2018-05-06 13:57:04.468966: handlerFinVaca()
+
+
+2018-05-06 13:57:04.470191: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:05.983054: handlerConectar()
+
+
+2018-05-06 13:57:05.986634: handlerFinVaca()
+
+
+2018-05-06 13:57:05.987534: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:06.473464: handlerConectar()
+
+
+2018-05-06 13:57:06.474440: handlerFinVaca()
+
+
+2018-05-06 13:57:06.475247: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:07.990437: handlerConectar()
+
+
+2018-05-06 13:57:07.993864: handlerFinVaca()
+
+
+2018-05-06 13:57:07.996696: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:08.479011: handlerConectar()
+
+
+2018-05-06 13:57:08.480480: handlerFinVaca()
+
+
+2018-05-06 13:57:08.481657: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:10.000893: handlerConectar()
+
+
+2018-05-06 13:57:10.003682: handlerFinVaca()
+
+
+2018-05-06 13:57:10.004831: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:10.484768: handlerConectar()
+
+
+2018-05-06 13:57:10.485689: handlerFinVaca()
+
+
+2018-05-06 13:57:10.486310: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:12.007276: handlerConectar()
+
+
+2018-05-06 13:57:12.010431: handlerFinVaca()
+
+
+2018-05-06 13:57:12.012119: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:12.489723: handlerConectar()
+
+
+2018-05-06 13:57:12.491100: handlerFinVaca()
+
+
+2018-05-06 13:57:12.492196: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:14.016860: handlerConectar()
+
+
+2018-05-06 13:57:14.019674: handlerFinVaca()
+
+
+2018-05-06 13:57:14.023405: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:14.493648: handlerConectar()
+
+
+2018-05-06 13:57:14.495300: handlerFinVaca()
+
+
+2018-05-06 13:57:14.496679: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:16.027795: handlerConectar()
+
+
+2018-05-06 13:57:16.030281: handlerFinVaca()
+
+
+2018-05-06 13:57:16.032196: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:16.499698: handlerConectar()
+
+
+2018-05-06 13:57:16.500090: handlerFinVaca()
+
+
+2018-05-06 13:57:16.500402: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:18.036577: handlerConectar()
+
+
+2018-05-06 13:57:18.038118: handlerFinVaca()
+
+
+2018-05-06 13:57:18.039361: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:18.503272: handlerConectar()
+
+
+2018-05-06 13:57:18.504916: handlerFinVaca()
+
+
+2018-05-06 13:57:18.506445: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:20.042554: handlerConectar()
+
+
+2018-05-06 13:57:20.044911: handlerFinVaca()
+
+
+2018-05-06 13:57:20.047283: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:20.510966: handlerConectar()
+
+
+2018-05-06 13:57:20.512624: handlerFinVaca()
+
+
+2018-05-06 13:57:20.514101: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:22.050228: handlerConectar()
+
+
+2018-05-06 13:57:22.052771: handlerFinVaca()
+
+
+2018-05-06 13:57:22.055060: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:22.517839: handlerConectar()
+
+
+2018-05-06 13:57:22.519531: handlerFinVaca()
+
+
+2018-05-06 13:57:22.520873: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:24.057736: handlerConectar()
+
+
+2018-05-06 13:57:24.061216: handlerFinVaca()
+
+
+2018-05-06 13:57:24.063277: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:24.524550: handlerConectar()
+
+
+2018-05-06 13:57:24.526408: handlerFinVaca()
+
+
+2018-05-06 13:57:24.527207: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:26.065788: handlerConectar()
+
+
+2018-05-06 13:57:26.066423: handlerFinVaca()
+
+
+2018-05-06 13:57:26.066987: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:26.529769: handlerConectar()
+
+
+2018-05-06 13:57:26.531790: handlerFinVaca()
+
+
+2018-05-06 13:57:26.533139: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:28.070539: handlerConectar()
+
+
+2018-05-06 13:57:28.073641: handlerFinVaca()
+
+
+2018-05-06 13:57:28.075234: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:28.536494: handlerConectar()
+
+
+2018-05-06 13:57:28.539489: handlerFinVaca()
+
+
+2018-05-06 13:57:28.540653: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:30.080049: handlerConectar()
+
+
+2018-05-06 13:57:30.082423: handlerFinVaca()
+
+
+2018-05-06 13:57:30.083717: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:30.543500: handlerConectar()
+
+
+2018-05-06 13:57:30.544351: handlerFinVaca()
+
+
+2018-05-06 13:57:30.545209: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:32.087941: handlerConectar()
+
+
+2018-05-06 13:57:32.090514: handlerFinVaca()
+
+
+2018-05-06 13:57:32.091736: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:32.548586: handlerConectar()
+
+
+2018-05-06 13:57:32.551041: handlerFinVaca()
+
+
+2018-05-06 13:57:32.551460: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:34.095221: handlerConectar()
+
+
+2018-05-06 13:57:34.097464: handlerFinVaca()
+
+
+2018-05-06 13:57:34.098594: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:34.555458: handlerConectar()
+
+
+2018-05-06 13:57:34.557822: handlerFinVaca()
+
+
+2018-05-06 13:57:34.559372: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:36.103206: handlerConectar()
+
+
+2018-05-06 13:57:36.107066: handlerFinVaca()
+
+
+2018-05-06 13:57:36.108709: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:36.562747: handlerConectar()
+
+
+2018-05-06 13:57:36.567722: handlerFinVaca()
+
+
+2018-05-06 13:57:36.569131: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:38.111258: handlerConectar()
+
+
+2018-05-06 13:57:38.111525: handlerFinVaca()
+
+
+2018-05-06 13:57:38.111733: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:38.573860: handlerConectar()
+
+
+2018-05-06 13:57:38.575657: handlerFinVaca()
+
+
+2018-05-06 13:57:38.576685: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:40.114241: handlerConectar()
+
+
+2018-05-06 13:57:40.116318: handlerFinVaca()
+
+
+2018-05-06 13:57:40.118643: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:40.580320: handlerConectar()
+
+
+2018-05-06 13:57:40.581826: handlerFinVaca()
+
+
+2018-05-06 13:57:40.583169: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:42.121948: handlerConectar()
+
+
+2018-05-06 13:57:42.123781: handlerFinVaca()
+
+
+2018-05-06 13:57:42.125103: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:42.586687: handlerConectar()
+
+
+2018-05-06 13:57:42.588257: handlerFinVaca()
+
+
+2018-05-06 13:57:42.589937: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:44.127806: handlerConectar()
+
+
+2018-05-06 13:57:44.128304: handlerFinVaca()
+
+
+2018-05-06 13:57:44.128750: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:44.594075: handlerConectar()
+
+
+2018-05-06 13:57:44.595722: handlerFinVaca()
+
+
+2018-05-06 13:57:44.598180: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:46.132095: handlerConectar()
+
+
+2018-05-06 13:57:46.135154: handlerFinVaca()
+
+
+2018-05-06 13:57:46.136863: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:46.600834: handlerConectar()
+
+
+2018-05-06 13:57:46.603116: handlerFinVaca()
+
+
+2018-05-06 13:57:46.604651: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:48.140048: handlerConectar()
+
+
+2018-05-06 13:57:48.142790: handlerFinVaca()
+
+
+2018-05-06 13:57:48.144369: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:48.607652: handlerConectar()
+
+
+2018-05-06 13:57:48.609621: handlerFinVaca()
+
+
+2018-05-06 13:57:48.611234: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:50.147169: handlerConectar()
+
+
+2018-05-06 13:57:50.149547: handlerFinVaca()
+
+
+2018-05-06 13:57:50.151188: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:50.614594: handlerConectar()
+
+
+2018-05-06 13:57:50.615929: handlerFinVaca()
+
+
+2018-05-06 13:57:50.617216: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:52.154958: handlerConectar()
+
+
+2018-05-06 13:57:52.157735: handlerFinVaca()
+
+
+2018-05-06 13:57:52.160334: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:52.620093: handlerConectar()
+
+
+2018-05-06 13:57:52.622070: handlerFinVaca()
+
+
+2018-05-06 13:57:52.624055: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:54.163026: handlerConectar()
+
+
+2018-05-06 13:57:54.166188: handlerFinVaca()
+
+
+2018-05-06 13:57:54.167595: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:54.628169: handlerConectar()
+
+
+2018-05-06 13:57:54.630649: handlerFinVaca()
+
+
+2018-05-06 13:57:54.632762: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:56.172279: handlerConectar()
+
+
+2018-05-06 13:57:56.177729: handlerFinVaca()
+
+
+2018-05-06 13:57:56.179614: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:56.636760: handlerConectar()
+
+
+2018-05-06 13:57:56.638756: handlerFinVaca()
+
+
+2018-05-06 13:57:56.640291: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:58.182112: handlerConectar()
+
+
+2018-05-06 13:57:58.184317: handlerFinVaca()
+
+
+2018-05-06 13:57:58.186554: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:57:58.643222: handlerConectar()
+
+
+2018-05-06 13:57:58.645955: handlerFinVaca()
+
+
+2018-05-06 13:57:58.647429: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:00.189973: handlerConectar()
+
+
+2018-05-06 13:58:00.192590: handlerFinVaca()
+
+
+2018-05-06 13:58:00.195096: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:00.651177: handlerConectar()
+
+
+2018-05-06 13:58:00.652765: handlerFinVaca()
+
+
+2018-05-06 13:58:00.655726: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:02.197782: handlerConectar()
+
+
+2018-05-06 13:58:02.201398: handlerFinVaca()
+
+
+2018-05-06 13:58:02.203714: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:02.659079: handlerConectar()
+
+
+2018-05-06 13:58:02.664360: handlerFinVaca()
+
+
+2018-05-06 13:58:02.664823: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:04.206725: handlerConectar()
+
+
+2018-05-06 13:58:04.208896: handlerFinVaca()
+
+
+2018-05-06 13:58:04.209275: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:04.668522: handlerConectar()
+
+
+2018-05-06 13:58:04.670251: handlerFinVaca()
+
+
+2018-05-06 13:58:04.671295: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:06.213362: handlerConectar()
+
+
+2018-05-06 13:58:06.215883: handlerFinVaca()
+
+
+2018-05-06 13:58:06.216431: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:06.675268: handlerConectar()
+
+
+2018-05-06 13:58:06.677936: handlerFinVaca()
+
+
+2018-05-06 13:58:06.679557: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:08.219123: handlerConectar()
+
+
+2018-05-06 13:58:08.220790: handlerFinVaca()
+
+
+2018-05-06 13:58:08.224235: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:08.682696: handlerConectar()
+
+
+2018-05-06 13:58:08.685165: handlerFinVaca()
+
+
+2018-05-06 13:58:08.686866: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:10.228959: handlerConectar()
+
+
+2018-05-06 13:58:10.231476: handlerFinVaca()
+
+
+2018-05-06 13:58:10.232897: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:10.690921: handlerConectar()
+
+
+2018-05-06 13:58:10.693276: handlerFinVaca()
+
+
+2018-05-06 13:58:10.695092: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:12.235884: handlerConectar()
+
+
+2018-05-06 13:58:12.237764: handlerFinVaca()
+
+
+2018-05-06 13:58:12.240281: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:12.698967: handlerConectar()
+
+
+2018-05-06 13:58:12.702176: handlerFinVaca()
+
+
+2018-05-06 13:58:12.703991: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:14.245951: handlerConectar()
+
+
+2018-05-06 13:58:14.248550: handlerFinVaca()
+
+
+2018-05-06 13:58:14.250575: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:14.707962: handlerConectar()
+
+
+2018-05-06 13:58:14.710465: handlerFinVaca()
+
+
+2018-05-06 13:58:14.711716: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:16.252116: handlerConectar()
+
+
+2018-05-06 13:58:16.254333: handlerFinVaca()
+
+
+2018-05-06 13:58:16.255957: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:16.715654: handlerConectar()
+
+
+2018-05-06 13:58:16.717381: handlerFinVaca()
+
+
+2018-05-06 13:58:16.718867: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:18.259771: handlerConectar()
+
+
+2018-05-06 13:58:18.261605: handlerFinVaca()
+
+
+2018-05-06 13:58:18.264061: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:18.722004: handlerConectar()
+
+
+2018-05-06 13:58:18.723877: handlerFinVaca()
+
+
+2018-05-06 13:58:18.725435: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:20.268814: handlerConectar()
+
+
+2018-05-06 13:58:20.271166: handlerFinVaca()
+
+
+2018-05-06 13:58:20.272953: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:20.729229: handlerConectar()
+
+
+2018-05-06 13:58:20.730756: handlerFinVaca()
+
+
+2018-05-06 13:58:20.731437: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:22.277052: handlerConectar()
+
+
+2018-05-06 13:58:22.279326: handlerFinVaca()
+
+
+2018-05-06 13:58:22.280448: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:22.733329: handlerConectar()
+
+
+2018-05-06 13:58:22.733614: handlerFinVaca()
+
+
+2018-05-06 13:58:22.733808: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:24.285339: handlerConectar()
+
+
+2018-05-06 13:58:24.287837: handlerFinVaca()
+
+
+2018-05-06 13:58:24.288952: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:24.737535: handlerConectar()
+
+
+2018-05-06 13:58:24.739638: handlerFinVaca()
+
+
+2018-05-06 13:58:24.741148: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:26.293578: handlerConectar()
+
+
+2018-05-06 13:58:26.296264: handlerFinVaca()
+
+
+2018-05-06 13:58:26.297778: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:26.745597: handlerConectar()
+
+
+2018-05-06 13:58:26.748245: handlerFinVaca()
+
+
+2018-05-06 13:58:26.749169: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:28.300858: handlerConectar()
+
+
+2018-05-06 13:58:28.304059: handlerFinVaca()
+
+
+2018-05-06 13:58:28.305793: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:28.751875: handlerConectar()
+
+
+2018-05-06 13:58:28.752297: handlerFinVaca()
+
+
+2018-05-06 13:58:28.752506: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:30.310949: handlerConectar()
+
+
+2018-05-06 13:58:30.313338: handlerFinVaca()
+
+
+2018-05-06 13:58:30.315034: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:30.755680: handlerConectar()
+
+
+2018-05-06 13:58:30.758185: handlerFinVaca()
+
+
+2018-05-06 13:58:30.759451: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:32.318560: handlerConectar()
+
+
+2018-05-06 13:58:32.320203: handlerFinVaca()
+
+
+2018-05-06 13:58:32.322203: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:32.765265: handlerConectar()
+
+
+2018-05-06 13:58:32.767003: handlerFinVaca()
+
+
+2018-05-06 13:58:32.768483: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:34.326084: handlerConectar()
+
+
+2018-05-06 13:58:34.328443: handlerFinVaca()
+
+
+2018-05-06 13:58:34.330487: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:34.772319: handlerConectar()
+
+
+2018-05-06 13:58:34.774935: handlerFinVaca()
+
+
+2018-05-06 13:58:34.776631: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:36.333837: handlerConectar()
+
+
+2018-05-06 13:58:36.336199: handlerFinVaca()
+
+
+2018-05-06 13:58:36.338069: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:36.779674: handlerConectar()
+
+
+2018-05-06 13:58:36.782423: handlerFinVaca()
+
+
+2018-05-06 13:58:36.783652: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:38.341411: handlerConectar()
+
+
+2018-05-06 13:58:38.343548: handlerFinVaca()
+
+
+2018-05-06 13:58:38.345493: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:38.787130: handlerConectar()
+
+
+2018-05-06 13:58:38.789439: handlerFinVaca()
+
+
+2018-05-06 13:58:38.791180: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:40.347804: handlerConectar()
+
+
+2018-05-06 13:58:40.348848: handlerFinVaca()
+
+
+2018-05-06 13:58:40.351040: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:40.794626: handlerConectar()
+
+
+2018-05-06 13:58:40.796805: handlerFinVaca()
+
+
+2018-05-06 13:58:40.798046: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:42.354569: handlerConectar()
+
+
+2018-05-06 13:58:42.356477: handlerFinVaca()
+
+
+2018-05-06 13:58:42.358710: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:42.799474: handlerConectar()
+
+
+2018-05-06 13:58:42.800853: handlerFinVaca()
+
+
+2018-05-06 13:58:42.802107: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:44.362076: handlerConectar()
+
+
+2018-05-06 13:58:44.363577: handlerFinVaca()
+
+
+2018-05-06 13:58:44.365946: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:44.805788: handlerConectar()
+
+
+2018-05-06 13:58:44.808036: handlerFinVaca()
+
+
+2018-05-06 13:58:44.809690: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:46.368413: handlerConectar()
+
+
+2018-05-06 13:58:46.370162: handlerFinVaca()
+
+
+2018-05-06 13:58:46.372319: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:46.812822: handlerConectar()
+
+
+2018-05-06 13:58:46.815016: handlerFinVaca()
+
+
+2018-05-06 13:58:46.816976: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:48.376873: handlerConectar()
+
+
+2018-05-06 13:58:48.382860: handlerFinVaca()
+
+
+2018-05-06 13:58:48.388215: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:48.819002: handlerConectar()
+
+
+2018-05-06 13:58:48.821747: handlerFinVaca()
+
+
+2018-05-06 13:58:48.823555: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:50.390720: handlerConectar()
+
+
+2018-05-06 13:58:50.391870: handlerFinVaca()
+
+
+2018-05-06 13:58:50.394473: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:50.826960: handlerConectar()
+
+
+2018-05-06 13:58:50.828686: handlerFinVaca()
+
+
+2018-05-06 13:58:50.829911: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:52.398495: handlerConectar()
+
+
+2018-05-06 13:58:52.400053: handlerFinVaca()
+
+
+2018-05-06 13:58:52.401983: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:52.834534: handlerConectar()
+
+
+2018-05-06 13:58:52.836168: handlerFinVaca()
+
+
+2018-05-06 13:58:52.838497: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:54.407065: handlerConectar()
+
+
+2018-05-06 13:58:54.410900: handlerFinVaca()
+
+
+2018-05-06 13:58:54.413789: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:54.842783: handlerConectar()
+
+
+2018-05-06 13:58:54.844647: handlerFinVaca()
+
+
+2018-05-06 13:58:54.846193: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:56.420880: handlerConectar()
+
+
+2018-05-06 13:58:56.422809: handlerFinVaca()
+
+
+2018-05-06 13:58:56.423860: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:56.848638: handlerConectar()
+
+
+2018-05-06 13:58:56.850486: handlerFinVaca()
+
+
+2018-05-06 13:58:56.852375: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:58.426943: handlerConectar()
+
+
+2018-05-06 13:58:58.427909: handlerFinVaca()
+
+
+2018-05-06 13:58:58.428303: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:58:58.855997: handlerConectar()
+
+
+2018-05-06 13:58:58.857954: handlerFinVaca()
+
+
+2018-05-06 13:58:58.858982: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:00.430879: handlerConectar()
+
+
+2018-05-06 13:59:00.431408: handlerFinVaca()
+
+
+2018-05-06 13:59:00.431691: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:00.862170: handlerConectar()
+
+
+2018-05-06 13:59:00.864746: handlerFinVaca()
+
+
+2018-05-06 13:59:00.866386: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:02.436754: handlerConectar()
+
+
+2018-05-06 13:59:02.439413: handlerFinVaca()
+
+
+2018-05-06 13:59:02.440414: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:02.870118: handlerConectar()
+
+
+2018-05-06 13:59:02.872016: handlerFinVaca()
+
+
+2018-05-06 13:59:02.873472: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:04.443645: handlerConectar()
+
+
+2018-05-06 13:59:04.445411: handlerFinVaca()
+
+
+2018-05-06 13:59:04.446749: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:04.877414: handlerConectar()
+
+
+2018-05-06 13:59:04.879532: handlerFinVaca()
+
+
+2018-05-06 13:59:04.880807: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:06.450749: handlerConectar()
+
+
+2018-05-06 13:59:06.452755: handlerFinVaca()
+
+
+2018-05-06 13:59:06.454320: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:06.885010: handlerConectar()
+
+
+2018-05-06 13:59:06.887135: handlerFinVaca()
+
+
+2018-05-06 13:59:06.888569: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:08.456961: handlerConectar()
+
+
+2018-05-06 13:59:08.459269: handlerFinVaca()
+
+
+2018-05-06 13:59:08.461550: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:08.892318: handlerConectar()
+
+
+2018-05-06 13:59:08.893831: handlerFinVaca()
+
+
+2018-05-06 13:59:08.894846: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:10.465349: handlerConectar()
+
+
+2018-05-06 13:59:10.466806: handlerFinVaca()
+
+
+2018-05-06 13:59:10.467895: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:10.898626: handlerConectar()
+
+
+2018-05-06 13:59:10.900305: handlerFinVaca()
+
+
+2018-05-06 13:59:10.902302: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:12.471040: handlerConectar()
+
+
+2018-05-06 13:59:12.474598: handlerFinVaca()
+
+
+2018-05-06 13:59:12.476297: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:12.906208: handlerConectar()
+
+
+2018-05-06 13:59:12.908147: handlerFinVaca()
+
+
+2018-05-06 13:59:12.909402: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:14.478070: handlerConectar()
+
+
+2018-05-06 13:59:14.479189: handlerFinVaca()
+
+
+2018-05-06 13:59:14.480150: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:14.912821: handlerConectar()
+
+
+2018-05-06 13:59:14.914688: handlerFinVaca()
+
+
+2018-05-06 13:59:14.916003: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:16.482416: handlerConectar()
+
+
+2018-05-06 13:59:16.483734: handlerFinVaca()
+
+
+2018-05-06 13:59:16.486085: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:16.918222: handlerConectar()
+
+
+2018-05-06 13:59:16.919407: handlerFinVaca()
+
+
+2018-05-06 13:59:16.920247: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:18.488833: handlerConectar()
+
+
+2018-05-06 13:59:18.489477: handlerFinVaca()
+
+
+2018-05-06 13:59:18.490077: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:18.922387: handlerConectar()
+
+
+2018-05-06 13:59:18.922671: handlerFinVaca()
+
+
+2018-05-06 13:59:18.922878: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:20.494294: handlerConectar()
+
+
+2018-05-06 13:59:20.496124: handlerFinVaca()
+
+
+2018-05-06 13:59:20.497661: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:20.924503: handlerConectar()
+
+
+2018-05-06 13:59:20.926627: handlerFinVaca()
+
+
+2018-05-06 13:59:20.928028: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:22.500863: handlerConectar()
+
+
+2018-05-06 13:59:22.502062: handlerFinVaca()
+
+
+2018-05-06 13:59:22.504355: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:22.931396: handlerConectar()
+
+
+2018-05-06 13:59:22.933443: handlerFinVaca()
+
+
+2018-05-06 13:59:22.935064: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:24.505748: handlerConectar()
+
+
+2018-05-06 13:59:24.506907: handlerFinVaca()
+
+
+2018-05-06 13:59:24.508030: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:24.938529: handlerConectar()
+
+
+2018-05-06 13:59:24.940592: handlerFinVaca()
+
+
+2018-05-06 13:59:24.941993: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:26.510448: handlerConectar()
+
+
+2018-05-06 13:59:26.513284: handlerFinVaca()
+
+
+2018-05-06 13:59:26.515873: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:26.944361: handlerConectar()
+
+
+2018-05-06 13:59:26.946497: handlerFinVaca()
+
+
+2018-05-06 13:59:26.946857: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:28.519896: handlerConectar()
+
+
+2018-05-06 13:59:28.521133: handlerFinVaca()
+
+
+2018-05-06 13:59:28.522100: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:28.949826: handlerConectar()
+
+
+2018-05-06 13:59:28.953795: handlerFinVaca()
+
+
+2018-05-06 13:59:28.955015: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:30.525811: handlerConectar()
+
+
+2018-05-06 13:59:30.527351: handlerFinVaca()
+
+
+2018-05-06 13:59:30.528765: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:30.958640: handlerConectar()
+
+
+2018-05-06 13:59:30.960855: handlerFinVaca()
+
+
+2018-05-06 13:59:30.962377: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:32.532521: handlerConectar()
+
+
+2018-05-06 13:59:32.534781: handlerFinVaca()
+
+
+2018-05-06 13:59:32.536219: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:32.966257: handlerConectar()
+
+
+2018-05-06 13:59:32.968388: handlerFinVaca()
+
+
+2018-05-06 13:59:32.969814: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:34.540328: handlerConectar()
+
+
+2018-05-06 13:59:34.542845: handlerFinVaca()
+
+
+2018-05-06 13:59:34.545409: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:34.974128: handlerConectar()
+
+
+2018-05-06 13:59:34.975912: handlerFinVaca()
+
+
+2018-05-06 13:59:34.977159: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:36.550572: handlerConectar()
+
+
+2018-05-06 13:59:36.553422: handlerFinVaca()
+
+
+2018-05-06 13:59:36.555221: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:36.980304: handlerConectar()
+
+
+2018-05-06 13:59:36.982708: handlerFinVaca()
+
+
+2018-05-06 13:59:36.984276: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:38.559720: handlerConectar()
+
+
+2018-05-06 13:59:38.562097: handlerFinVaca()
+
+
+2018-05-06 13:59:38.563475: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:38.986574: handlerConectar()
+
+
+2018-05-06 13:59:38.988035: handlerFinVaca()
+
+
+2018-05-06 13:59:38.989714: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:40.567172: handlerConectar()
+
+
+2018-05-06 13:59:40.569616: handlerFinVaca()
+
+
+2018-05-06 13:59:40.571813: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:40.993264: handlerConectar()
+
+
+2018-05-06 13:59:40.994528: handlerFinVaca()
+
+
+2018-05-06 13:59:40.995537: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:42.574412: handlerConectar()
+
+
+2018-05-06 13:59:42.577972: handlerFinVaca()
+
+
+2018-05-06 13:59:42.578731: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:42.998344: handlerConectar()
+
+
+2018-05-06 13:59:43.003142: handlerFinVaca()
+
+
+2018-05-06 13:59:43.004619: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:44.581460: handlerConectar()
+
+
+2018-05-06 13:59:44.584173: handlerFinVaca()
+
+
+2018-05-06 13:59:44.586345: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:45.006641: handlerConectar()
+
+
+2018-05-06 13:59:45.007752: handlerFinVaca()
+
+
+2018-05-06 13:59:45.008945: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:46.588153: handlerConectar()
+
+
+2018-05-06 13:59:46.590589: handlerFinVaca()
+
+
+2018-05-06 13:59:46.593214: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:47.011581: handlerConectar()
+
+
+2018-05-06 13:59:47.013247: handlerFinVaca()
+
+
+2018-05-06 13:59:47.015489: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:48.597012: handlerConectar()
+
+
+2018-05-06 13:59:48.600170: handlerFinVaca()
+
+
+2018-05-06 13:59:48.602187: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:49.019153: handlerConectar()
+
+
+2018-05-06 13:59:49.020447: handlerFinVaca()
+
+
+2018-05-06 13:59:49.022336: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:50.605501: handlerConectar()
+
+
+2018-05-06 13:59:50.609580: handlerFinVaca()
+
+
+2018-05-06 13:59:50.612234: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:51.028254: handlerConectar()
+
+
+2018-05-06 13:59:51.032166: handlerFinVaca()
+
+
+2018-05-06 13:59:51.033237: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:52.615841: handlerConectar()
+
+
+2018-05-06 13:59:52.618288: handlerFinVaca()
+
+
+2018-05-06 13:59:52.620275: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:53.035492: handlerConectar()
+
+
+2018-05-06 13:59:53.038420: handlerFinVaca()
+
+
+2018-05-06 13:59:53.039987: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:54.624546: handlerConectar()
+
+
+2018-05-06 13:59:54.628513: handlerFinVaca()
+
+
+2018-05-06 13:59:54.629675: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:55.043990: handlerConectar()
+
+
+2018-05-06 13:59:55.046450: handlerFinVaca()
+
+
+2018-05-06 13:59:55.047968: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:56.633785: handlerConectar()
+
+
+2018-05-06 13:59:56.636218: handlerFinVaca()
+
+
+2018-05-06 13:59:56.637477: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:57.050199: handlerConectar()
+
+
+2018-05-06 13:59:57.051772: handlerFinVaca()
+
+
+2018-05-06 13:59:57.052909: <class 'serial.serialutil.SerialException'>
+
+2018-05-06 13:59:58.639778: handlerConectar()
+
+
+2018-05-06 13:59:58.642507: handlerFinVaca()
+
+
+2018-05-06 13:59:58.644308: <class 'serial.serialutil.SerialException'>
+

@@ -36,7 +36,7 @@ from select import*
 import time 
 import datetime
 #librerias propias
-import src.GestorUMs_v4.GestorUMs as UMs
+import src.GestorUMs as UMs
 import src.servidorM as movil
 pathLog="logs/"
 class ProcessGestorUMs(multiprocessing.Process):
