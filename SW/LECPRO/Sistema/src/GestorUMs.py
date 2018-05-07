@@ -51,39 +51,46 @@ macDongle = "00:1F:81:00:08:30"
 macRpi = "B8:27:EB:6E:D1:F6"
 
 stop = False
-umbral = 50
+umbral = 11
 TAM=10
 filenameCLF = 'Modelos/modelo_1_0.sav'
 pathLog="logs/"
 pathDatos = "Datos/"
 
 class myThread (threading.Thread):
-   def __init__(self, name, device):
+   def __init__(self, bd_addr, device,name):
       threading.Thread.__init__(self)
-      self.name = name
+      self.bd_addr = bd_addr
       self.device = device
+      self.name = name
    def run(self):
       print ("Starting " + self.name)
-      UMhandler(self.name,self.device)
+      UMhandler(self.bd_addr,self.device,self.name)
       print ("Exiting " + self.name)
    def join(self,timeout=None):
       threading.Thread.join(self,timeout)
 
 def gestorDeUMs(conn):
-    global TAM,stop,clf,filenameCLF,umbral
+    global TAM,stop,clf,filenameCLF,umbral,caravanas
     filenameLog = 'GestorDeUMs.log'
     log("\n\n\n\n\n\n",filenameLog)
     #busco por dispositivos bluetooth cercanos
-    tarjeta,dongle = comunicacion.dispositivos()
+    mac,ids = comunicacion.dispositivos()
     # genero threads paralelos para atender cada UM
     threads = []
     port=0
-    for bd_addr in tarjeta:
-            t = myThread(bd_addr,port)
+    caravanas = {}
+    for name in ids:
+            caravanas[name] = np.array([0,0])
+    print(caravanas)
+    print(ids)
+    for i in range(len(mac)):
+            t = myThread(mac[i],port,ids[i])
             threads.append(t)
             t.start()
             port= port+1
             time.sleep(1)
+
     # cargar modelo
     clf = procesamiento.load_modelo(filenameCLF)
 
@@ -98,6 +105,21 @@ def gestorDeUMs(conn):
                         log("Gestor Recibio Fin de Ordenie",filenameLog)
                         stop = True
                         break
+                    else:
+                        if msj == 'CAR':
+                            log("Gestor Recibio Caravana",filenameLog)
+                            msj = conn.recv()
+                            msj = str(msj,'utf-8')
+                            print(msj)
+                            idBd_addr =msj[6:]
+                            print("Caravana")
+                            print(idBd_addr)
+                            vacaId = msj[:5]
+                            caravanas[idBd_addr][1] = int(vacaId)
+                            caravanas[idBd_addr][0] = 1
+                            print("Se recibio caravana")
+                            print(str(int(vacaId)))
+                            print(caravanas[idBd_addr])
         except:
             e = sys.exc_info()[0]
             log(str(e),filenameLog)
@@ -107,7 +129,7 @@ def gestorDeUMs(conn):
     conn.close()
 
 
-def UMhandler(bd_addr,port):
+def UMhandler(bd_addr,port,name):
     global stop
 
     def hayPaquete():
@@ -119,10 +141,9 @@ def UMhandler(bd_addr,port):
             if (inicio==b'I'):
                 payload = []
                 for i in range(10):
-                    nuevo = []
-                    nuevo.append(sock_blu.read(1))
+                    nuevo = sock_blu.read(1)
                     if len(nuevo)>0:
-                        payload.append(nuevo[0])
+                        payload.append(nuevo)
                     else:
                         break
                 #se recibe paquete completo?
@@ -134,31 +155,38 @@ def UMhandler(bd_addr,port):
                         dato.append(float(ord(hb)<<8|ord(lb)))
             return dato
     def writeDataNewCow(newData,filename):
+            nonlocal filenameLog
             log('writeDataNewCow()\n',filenameLog)
             file = open(filename,"a")
             file.writelines(newData)
             file.close()
-    def procesarPaquete(nuevoDato):
-            nonlocal indStack,stackDatos,EnOrdenie,filename,bd_addr,port
+    def procesarPaquete(nuevoDato,name):
+            nonlocal indStack,stackDatos,EnOrdenie,filename,bd_addr,port,filenameLog,finVaca
             global pathDatos
             log('procesarPaquete()\n',filenameLog)
-            stackDatos[indStack,:] = nuevoDato
+            stackDatos[indStack,:] = nuevoDato[:4]
             indStack = (indStack + 1)%TAM
             finVaca = False
+            print(stackDatos)
             if ( hayFlujo(EnOrdenie,stackDatos,indStack) ):
                 if not EnOrdenie :
                     EnOrdenie = True
-                    filename = pathDatos +bd_addr+"_"+str(datetime.datetime.now())
+                    if caravanas[name][0] == 1:
+                        filename = pathDatos+str(caravanas[name][1])+".txt"
+                    else:
+                        filename = pathDatos +bd_addr+"_"+str(time.mktime(datetime.datetime.now().timetuple()))+".txt"
                 stringDato =  str(nuevoDato[0])+","+str(nuevoDato[1])+","+str(nuevoDato[2])+","+str(nuevoDato[3])+","+str(nuevoDato[4])+"\n"
                 writeDataNewCow(stringDato,filename)
             else:
                 if EnOrdenie:
                     EnOrdenie = False
                     finVaca = True
+                    print("Fin de ordenie")
             return finVaca
 
     def hayFlujo(ordenie,stackDatos,indStack):
             global umbral,TAM
+            nonlocal filenameLog
             log('hayFlujo()\n',filenameLog)
             resultado1 = True
             resultado2 = True
@@ -184,33 +212,49 @@ def UMhandler(bd_addr,port):
             time.sleep(1)
             sock_blu.write(b'S')
             conectarUM = False
-    def handlerFinVaca():
-            nonlocal finVaca,filename,sock_blu
-            global clf
+    def handlerFinVaca(name):
+            nonlocal finVaca,filename,sock_blu,filenameLog
+            global clf,caravanas
             log('handlerFinVaca()\n',filenameLog)
             finVaca = False
-            series = np.genfromtxt(filename,dtype=float)
-            caracteristicas = procesamiento.transformacionCaracteristicas(series)
+            series = np.genfromtxt(filename,dtype=float,delimiter=",")
+            caracteristicas = procesamiento.transformacionCaracteristicas(series[:,:4])
+
             pred = clf.predict(caracteristicas)
             if pred == 1:
                 #tiene mastitis
-                sock_blu.write('1')
+                sock_blu.write(b'1')
             else:
                 #no tiene mastitis
-                sock_blu.write('0')
+                sock_blu.write(b'0')
+            print(caravanas[name])
+            if caravanas[name][0] == 1:
+                  cambiarNombreArchivo(filename,name)
+                  caravanas[name][0] = 0
+                  print(name)
     def handlerException():
-            nonlocal sock_blu,conectarUM
-            log('handlerFinVaca()\n',filenameLog)
+            nonlocal sock_blu,conectarUM,filenameLog
+            log('Exception()\n',filenameLog)
             sock_blu.close()
             conectarUM = True
             e = sys.exc_info()[0]
             log(str(e),filenameLog)
             time.sleep(2)
+
+    def cambiarNombreArchivo(filename,name):
+            nonlocal filenameLog
+            global caravanas
+            log('cambiarNombreArchivo()\n',filenameLog)
+            nuevoNombre = pathDatos+str(caravanas[name][1])+".txt"
+            string = "sudo mv "+filename+" "+nuevoNombre
+            print(string)
+            os.system(string)
+            log("renombrando: de "+filename+" a "+nuevoNombre+"\n",filenameLog)
     # inicio 
     filenameLog = str(bd_addr)+".log"
     log("\n\n\n\n",filenameLog)
     conectarUM = True
-    stackDatos = np.zeros((TAM,5))
+    stackDatos = np.zeros((TAM,4))
     indStack = 0
     EnOrdenie = False
     finVaca = False
@@ -225,18 +269,21 @@ def UMhandler(bd_addr,port):
                 break
 
             if finVaca:
-                handlerFinVaca()
+                print("Es fin de ordenie?")
+                handlerFinVaca(name)
 
 
             if conectarUM:
                 handlerConectar()
 
+
             dato = hayPaquete()
             if ( len( dato) > 0  ):
-                finVaca = procesarPaquete(dato)
+                procesarPaquete(dato,name)
 
-        except:
+        except IOError:
             handlerException()
+
 
 def log(texto,filename):
     global pathLog

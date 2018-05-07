@@ -75,14 +75,13 @@ def log(texto,filename):
 if __name__ == '__main__':
     macDongle = "00:1F:81:00:08:30"
     #busco por dispositivos bluetooth cercanos
+    filenameLog="main.log"
+
     servidor = ProcessServidorMovil(macDongle)
     servidorPipe = servidor.getPipe()
     servidor.start()
-    filenameLog="main.log"
     gestor = ProcessGestorUMs()
     gestorPipe = gestor.getPipe()
-    gestor.start()
-
 
     while True:
         try:
@@ -91,15 +90,24 @@ if __name__ == '__main__':
             readable,writable,excepts=select([servidorPipe],[],[], 0.01)
             if servidorPipe in readable:
                  msj = servidorPipe.recv()
+                 if msj[0] == 'fin':
+                    gestorPipe.send('FIN')
+                    break
+                 else:
+                    if msj[0] == 'car':
+                       gestorPipe.send("CAR")
+                       gestorPipe.send(msj[1])
+                    else:
+                        if msj[0] == 'start':
+                            gestor.start()
         except:
-            gestorPipe.send("FIN")
             e = sys.exc_info()[0]
             log(str(e),filenameLog)
             break
     print("main: Final del programa")
 #==============================================================================
     gestor.join()
-#    servidor.join()
+    servidor.join()
 #==============================================================================
 
     

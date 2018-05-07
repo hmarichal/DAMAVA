@@ -28,13 +28,11 @@ def servidorMovil(conn,mac):
             if client_sock in readable:
                 data = client_sock.recv(13)
                 print ('servidorMovil: recibio ',data)
-                if data[:3]=='CAR':
-                    string = data[10:]
-                    datos = data[4:9]
-                    conn.send([string,data])
+                if data[:3]==b'CAR':
+                    conn.send(['car',data[4:]])
                     client_sock.send('Caravana ingresada correctamente\n')
                 else:
-                    if data[:3] == 'FIN':
+                    if data == b'FIN':
                         conn.send(['fin',0])
                         client_sock.send('Fin del sistema\n')
                         client_sock.close()
@@ -42,7 +40,7 @@ def servidorMovil(conn,mac):
                         conn.close()
                         break
                     else:
-                        if data[:5]=='START':
+                        if data==b'START':
                             conn.send(['start',0])
                             client_sock.send('Inicio de Sistema\n')
                         else:

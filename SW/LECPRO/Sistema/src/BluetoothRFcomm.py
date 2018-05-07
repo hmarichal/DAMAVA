@@ -27,18 +27,15 @@ class BluetoothRFcomm:
 
 def dispositivos():
     file = open("dispositivos.txt","r")
-    dongle = []
+    name= []
     tarjeta = []
     file.readline()
     file.readline()
     for linea in file:
         if linea[0]!='#':
             bd_addr = linea[:17]
-            if linea[18] == '0':
-                tarjeta.append(bd_addr)
-            else:
-                dongle.append(bd_addr)
+            tarjeta.append(bd_addr)
+            name.append("UM"+str(linea[18]))
     file.close()
-    print (tarjeta,dongle)
-    return tarjeta,dongle
+    return tarjeta,name
     

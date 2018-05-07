@@ -1,4 +1,4 @@
-2018-05-06 13:31:48.569799: 
+2018-05-06 20:49:55.864174: 
 
 
 
@@ -6,19 +6,11 @@
 
 
 
-2018-05-06 13:32:59.951150: <class 'KeyboardInterrupt'>
+2018-05-06 20:50:46.428513: Gestor recibio nuevo mensaje
 
-2018-05-06 13:35:23.674469: 
+2018-05-06 20:50:46.430280: Gestor Recibio Fin de Ordenie
 
-
-
-
-
-
-
-2018-05-06 13:35:29.113399: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:35:54.859835: 
+2018-05-06 20:51:05.130064: 
 
 
 
@@ -26,25 +18,11 @@
 
 
 
-2018-05-06 13:36:52.807490: <class 'KeyboardInterrupt'>
+2018-05-06 20:52:15.928972: Gestor recibio nuevo mensaje
 
-2018-05-06 13:37:48.281158: 
+2018-05-06 20:52:15.930651: Gestor Recibio Fin de Ordenie
 
-
-
-
-
-
-
-2018-05-06 13:38:12.318652: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:38:12.320230: Gestor recibio nuevo mensaje
-
-2018-05-06 13:38:44.175602: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:38:45.088192: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:38:49.606235: 
+2018-05-06 20:52:34.490673: 
 
 
 
@@ -52,15 +30,11 @@
 
 
 
-2018-05-06 13:39:01.492454: <class 'KeyboardInterrupt'>
+2018-05-06 20:54:49.684764: <class 'KeyboardInterrupt'>
 
-2018-05-06 13:39:01.494700: Gestor recibio nuevo mensaje
+2018-05-06 20:54:50.389704: <class 'KeyboardInterrupt'>
 
-2018-05-06 13:39:14.276015: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:39:14.767239: <class 'KeyboardInterrupt'>
-
-2018-05-06 13:39:18.830421: 
+2018-05-06 20:55:02.059213: 
 
 
 
@@ -68,9 +42,217 @@
 
 
 
-2018-05-06 13:41:19.756213: <class 'KeyboardInterrupt'>
+2018-05-06 20:56:45.228209: Gestor recibio nuevo mensaje
 
-2018-05-06 13:41:19.756765: Gestor recibio nuevo mensaje
+2018-05-06 20:56:45.230089: Gestor Recibio Caravana
 
-2018-05-06 13:41:19.757344: Gestor Recibio Fin de Ordenie
+2018-05-06 20:59:28.064131: Gestor recibio nuevo mensaje
+
+2018-05-06 20:59:28.066199: Gestor Recibio Fin de Ordenie
+
+2018-05-06 20:59:59.373496: 
+
+
+
+
+
+
+
+2018-05-06 21:00:59.044759: Gestor recibio nuevo mensaje
+
+2018-05-06 21:00:59.046339: Gestor Recibio Caravana
+
+2018-05-06 21:00:59.047442: <class 'KeyError'>
+
+2018-05-06 21:02:05.791466: Gestor recibio nuevo mensaje
+
+2018-05-06 21:02:05.793292: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:03:47.427513: 
+
+
+
+
+
+
+
+2018-05-06 21:04:28.889583: Gestor recibio nuevo mensaje
+
+2018-05-06 21:04:28.890821: Gestor Recibio Caravana
+
+2018-05-06 21:04:28.891678: <class 'KeyError'>
+
+2018-05-06 21:05:19.456553: Gestor recibio nuevo mensaje
+
+2018-05-06 21:05:19.457726: Gestor Recibio Caravana
+
+2018-05-06 21:05:19.458532: <class 'KeyError'>
+
+2018-05-06 21:08:49.840255: Gestor recibio nuevo mensaje
+
+2018-05-06 21:08:49.842380: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:09:17.010843: 
+
+
+
+
+
+
+
+2018-05-06 21:09:54.425747: Gestor recibio nuevo mensaje
+
+2018-05-06 21:09:54.427208: Gestor Recibio Caravana
+
+2018-05-06 21:09:54.428490: <class 'KeyError'>
+
+2018-05-06 21:11:50.734252: Gestor recibio nuevo mensaje
+
+2018-05-06 21:11:50.735336: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:12:08.271754: 
+
+
+
+
+
+
+
+2018-05-06 21:12:21.412878: Gestor recibio nuevo mensaje
+
+2018-05-06 21:12:21.414705: Gestor Recibio Caravana
+
+2018-05-06 21:12:21.416049: <class 'KeyError'>
+
+2018-05-06 21:12:50.737116: Gestor recibio nuevo mensaje
+
+2018-05-06 21:12:50.738480: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:13:04.446560: 
+
+
+
+
+
+
+
+2018-05-06 21:13:21.633252: Gestor recibio nuevo mensaje
+
+2018-05-06 21:13:21.634861: Gestor Recibio Caravana
+
+2018-05-06 21:13:21.636345: <class 'NameError'>
+
+2018-05-06 21:15:54.349080: Gestor recibio nuevo mensaje
+
+2018-05-06 21:15:54.351824: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:16:15.618425: 
+
+
+
+
+
+
+
+2018-05-06 21:16:36.853013: Gestor recibio nuevo mensaje
+
+2018-05-06 21:16:36.854676: Gestor Recibio Caravana
+
+2018-05-06 21:16:36.855617: <class 'NameError'>
+
+2018-05-06 21:19:15.648287: Gestor recibio nuevo mensaje
+
+2018-05-06 21:19:15.650854: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:19:30.469241: 
+
+
+
+
+
+
+
+2018-05-06 21:19:53.720646: Gestor recibio nuevo mensaje
+
+2018-05-06 21:19:53.722606: Gestor Recibio Caravana
+
+2018-05-06 21:19:53.724103: <class 'NameError'>
+
+2018-05-06 21:21:19.688932: Gestor recibio nuevo mensaje
+
+2018-05-06 21:21:19.690675: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:21:38.366673: 
+
+
+
+
+
+
+
+2018-05-06 21:21:57.574257: Gestor recibio nuevo mensaje
+
+2018-05-06 21:21:57.574874: Gestor Recibio Caravana
+
+2018-05-06 21:21:57.575291: <class 'NameError'>
+
+2018-05-06 21:23:07.356516: Gestor recibio nuevo mensaje
+
+2018-05-06 21:23:07.357763: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:26:26.430970: 
+
+
+
+
+
+
+
+2018-05-06 21:26:40.583416: Gestor recibio nuevo mensaje
+
+2018-05-06 21:26:40.584947: Gestor Recibio Caravana
+
+2018-05-06 21:27:56.444095: Gestor recibio nuevo mensaje
+
+2018-05-06 21:27:56.445801: Gestor Recibio Caravana
+
+2018-05-06 21:29:08.250571: Gestor recibio nuevo mensaje
+
+2018-05-06 21:29:08.252558: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:29:27.329403: 
+
+
+
+
+
+
+
+2018-05-06 21:29:56.646328: Gestor recibio nuevo mensaje
+
+2018-05-06 21:29:56.647441: Gestor Recibio Caravana
+
+2018-05-06 21:34:37.837108: Gestor recibio nuevo mensaje
+
+2018-05-06 21:34:37.839165: Gestor Recibio Fin de Ordenie
+
+2018-05-06 21:35:04.205888: 
+
+
+
+
+
+
+
+2018-05-06 21:35:53.763076: Gestor recibio nuevo mensaje
+
+2018-05-06 21:35:53.764450: Gestor Recibio Caravana
+
+2018-05-06 21:37:00.508400: Gestor recibio nuevo mensaje
+
+2018-05-06 21:37:00.510432: Gestor Recibio Caravana
+
+2018-05-06 21:37:26.799508: Gestor recibio nuevo mensaje
+
+2018-05-06 21:37:26.799904: Gestor Recibio Fin de Ordenie
 

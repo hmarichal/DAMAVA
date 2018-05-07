@@ -4,9 +4,7 @@
 #define MAX_BUFFER 500
 
 SoftwareSerial hc051(8,9);
-SoftwareSerial hc052(10,11);
-SoftwareSerial hc053(12,13);
-SoftwareSerial hc054(6,7);
+;
 
 int flagTimer,ticks,cond,temp;
 unsigned char ind;
@@ -23,20 +21,9 @@ void setup() {
   delay(500);
   hc051.begin(38400);
 
-  hc052.flush();
-  delay(500);
-  hc052.begin(38400);
-
-  hc053.flush();
-  delay(500);
-  hc053.begin(38400);
-
-  hc054.flush();
-  delay(500);
-  hc054.begin(38400);
   
   for(i=7;i<MAX_BUFFER-40;i++){
-      bufferArt[i] =i;
+      bufferArt[i] =i%30;
   }
 }
 
@@ -99,31 +86,5 @@ void SendBuff(int buff[]){
         hb = (buff[j]>>8)&0x00FF;
         hc051.write(lb);
         hc051.write(hb);
-  }
-
-  hc052.write('I');
-
-  for(char j;j<5;j++){
-        lb = (buff[j]&0x00FF);
-        hb = (buff[j]>>8)&0x00FF;
-        hc052.write(lb);
-        hc052.write(hb);
-  }
-
-  hc053.write('I');
-
-  for(char j;j<5;j++){
-        lb = (buff[j]&0x00FF);
-        hb = (buff[j]>>8)&0x00FF;
-        hc053.write(lb);
-        hc053.write(hb);
-  }
-  hc054.write('I');
-
-  for(char j;j<5;j++){
-        lb = (buff[j]&0x00FF);
-        hb = (buff[j]>>8)&0x00FF;
-        hc054.write(lb);
-        hc054.write(hb);
   }
 }
