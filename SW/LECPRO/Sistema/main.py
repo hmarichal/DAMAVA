@@ -4,9 +4,9 @@ Created on Sat Jan 13 12:58:30 2018
 
 @author: henry
 """
-from scipy.optimize import curve_fit
+
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 
 from sklearn.ensemble import RandomForestClassifier
@@ -19,7 +19,7 @@ from sklearn.cross_validation import  cross_val_score
 from sklearn.model_selection import GridSearchCV, KFold, StratifiedKFold
 from sklearn import preprocessing
 
-from scipy.optimize import curve_fit
+
 
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
