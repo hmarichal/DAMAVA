@@ -82,8 +82,7 @@ def gestorDeUMs(conn):
     caravanas = {}
     for name in ids:
             caravanas[name] = np.array([0,0])
-    print(caravanas)
-    print(ids)
+
     for i in range(len(mac)):
             t = myThread(mac[i],port,ids[i])
             threads.append(t)
@@ -110,16 +109,11 @@ def gestorDeUMs(conn):
                             log("Gestor Recibio Caravana",filenameLog)
                             msj = conn.recv()
                             msj = str(msj,'utf-8')
-                            print(msj)
                             idBd_addr =msj[6:]
-                            print("Caravana")
-                            print(idBd_addr)
                             vacaId = msj[:5]
                             caravanas[idBd_addr][1] = int(vacaId)
                             caravanas[idBd_addr][0] = 1
-                            print("Se recibio caravana")
-                            print(str(int(vacaId)))
-                            print(caravanas[idBd_addr])
+
         except:
             e = sys.exc_info()[0]
             log(str(e),filenameLog)
@@ -281,7 +275,7 @@ def UMhandler(bd_addr,port,name):
             if ( len( dato) > 0  ):
                 procesarPaquete(dato,name)
 
-        except IOError:
+        except:
             handlerException()
 
 
