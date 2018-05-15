@@ -11,24 +11,24 @@ import numpy as np
 
 
 #from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import cross_val_predict
-import sklearn.metrics as metrics
+#from sklearn.model_selection import cross_val_predict
+#import sklearn.metrics as metrics
 
 
-from sklearn.utils import shuffle
-from sklearn.cross_validation import  cross_val_score
-from sklearn.model_selection import GridSearchCV, KFold, StratifiedKFold
-from sklearn import preprocessing
+#from sklearn.utils import shuffle
+#from sklearn.cross_validation import  cross_val_score
+#from sklearn.model_selection import GridSearchCV, KFold, StratifiedKFold
+#from sklearn import preprocessing
 
 
 
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import chi2
+#from sklearn.feature_selection import SelectKBest
+#from sklearn.feature_selection import chi2
 
-from sklearn.feature_selection import RFECV
-from sklearn.svm import SVC
-from sklearn.decomposition import PCA
-from sklearn.model_selection import train_test_split
+#from sklearn.feature_selection import RFECV
+#from sklearn.svm import SVC
+#from sklearn.decomposition import PCA
+#from sklearn.model_selection import train_test_split
 
 
 import pickle 
@@ -91,7 +91,7 @@ def gestorDeUMs(conn):
             time.sleep(1)
 
     # cargar modelo
-    clf = procesamiento.load_modelo(filenameCLF)
+    #clf = procesamiento.load_modelo(filenameCLF)
 
     while True:
         try:
@@ -214,13 +214,13 @@ def UMhandler(bd_addr,port,name):
             series = np.genfromtxt(filename,dtype=float,delimiter=",")
             caracteristicas = procesamiento.transformacionCaracteristicas(series[:,:4])
 
-            pred = clf.predict(caracteristicas)
-            if pred == 1:
+            # pred = clf.predict(caracteristicas)
+            # if pred == 1:
                 #tiene mastitis
-                sock_blu.write(b'1')
-            else:
+            #     sock_blu.write(b'1')
+            # else:
                 #no tiene mastitis
-                sock_blu.write(b'0')
+            #     sock_blu.write(b'0')
             print(caravanas[name])
             if caravanas[name][0] == 1:
                   cambiarNombreArchivo(filename,name)
