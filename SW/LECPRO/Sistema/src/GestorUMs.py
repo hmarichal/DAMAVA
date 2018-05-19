@@ -71,7 +71,7 @@ class myThread (threading.Thread):
       threading.Thread.join(self,timeout)
 
 def gestorDeUMs(conn):
-    global TAM,stop,clf,filenameCLF,umbral,caravanas
+    global TAM,stop,clf,filenameCLF,umbral,caravanas,lock
     filenameLog = 'GestorDeUMs.log'
     log("\n\n\n\n\n\n",filenameLog)
     #busco por dispositivos bluetooth cercanos
@@ -83,13 +83,14 @@ def gestorDeUMs(conn):
     for name in ids:
             caravanas[name] = np.array([0,0])
 
+    
     for i in range(len(mac)):
             t = myThread(mac[i],port,ids[i])
             threads.append(t)
             t.start()
             port= port+1
             time.sleep(1)
-
+    lock = threading.Lock()
     # cargar modelo
     #clf = procesamiento.load_modelo(filenameCLF)
 
@@ -111,8 +112,10 @@ def gestorDeUMs(conn):
                             msj = str(msj,'utf-8')
                             idBd_addr =msj[6:]
                             vacaId = msj[:5]
+                            lock.acquire()
                             caravanas[idBd_addr][1] = int(vacaId)
                             caravanas[idBd_addr][0] = 1
+                            lock.release()
 
         except:
             e = sys.exc_info()[0]
@@ -124,7 +127,7 @@ def gestorDeUMs(conn):
 
 
 def UMhandler(bd_addr,port,name):
-    global stop
+    global stop,lock
 
     def hayPaquete():
             nonlocal sock_blu,filenameLog
@@ -154,34 +157,37 @@ def UMhandler(bd_addr,port,name):
             file = open(filename,"a")
             file.writelines(newData)
             file.close()
-    def procesarPaquete(nuevoDato,name):
-            nonlocal indStack,stackDatos,EnOrdenie,filename,bd_addr,port,filenameLog,finVaca
+    def procesarDato(nuevoDato,name):
+            nonlocal indStack,stackDatos,DatoAnteriorValido,filename,bd_addr,port,filenameLog,finVaca
             global pathDatos
             log('procesarPaquete()\n',filenameLog)
             stackDatos[indStack,:] = nuevoDato[:4]
             indStack = (indStack + 1)%TAM
             finVaca = False
             print(stackDatos)
-            if ( hayFlujo(EnOrdenie,stackDatos,indStack) ):
-                if not EnOrdenie :
-                    EnOrdenie = True
+            if ( EsValido(DatoAnteriorValido,stackDatos,indStack) ):
+                if not DatoAnteriorValido :
                     if caravanas[name][0] == 1:
                         filename = pathDatos+str(caravanas[name][1])+".txt"
                     else:
                         filename = pathDatos +bd_addr+"_"+str(time.mktime(datetime.datetime.now().timetuple()))+".txt"
+                        print("Estoy aca ")
+
                 stringDato =  str(nuevoDato[0])+","+str(nuevoDato[1])+","+str(nuevoDato[2])+","+str(nuevoDato[3])+","+str(nuevoDato[4])+"\n"
                 writeDataNewCow(stringDato,filename)
+
+                DatoAnteriorValido = True
             else:
-                if EnOrdenie:
-                    EnOrdenie = False
+                if DatoAnteriorValido:
+                    DatoAnteriorValido = False
                     finVaca = True
                     print("Fin de ordenie")
             return finVaca
 
-    def hayFlujo(ordenie,stackDatos,indStack):
+    def EsValido(ordenie,stackDatos,indStack):
             global umbral,TAM
             nonlocal filenameLog
-            log('hayFlujo()\n',filenameLog)
+            log('EsValido()\n',filenameLog)
             resultado1 = True
             resultado2 = True
             resultado3 = True
@@ -198,17 +204,10 @@ def UMhandler(bd_addr,port,name):
                     resultado4 = stackDatos[(indStack-i+TAM)%TAM,3] > umbral and resultado4
                 resultado = resultado1 or resultado2 or resultado3 or resultado4
             return resultado
-    def handlerConectar():
-            nonlocal sock_blu,filenameLog,conectarUM
-            log('handlerConectar()\n',filenameLog)
-            sock_blu.connect()
-            log('Coneccion establecida\n',filenameLog)
-            time.sleep(1)
-            sock_blu.write(b'S')
-            conectarUM = False
+
     def handlerFinVaca(name):
             nonlocal finVaca,filename,sock_blu,filenameLog
-            global clf,caravanas
+            global clf,caravanas,lock
             log('handlerFinVaca()\n',filenameLog)
             finVaca = False
             series = np.genfromtxt(filename,dtype=float,delimiter=",")
@@ -221,11 +220,11 @@ def UMhandler(bd_addr,port,name):
             # else:
                 #no tiene mastitis
             #     sock_blu.write(b'0')
-            print(caravanas[name])
+            lock.acquire()
             if caravanas[name][0] == 1:
                   cambiarNombreArchivo(filename,name)
                   caravanas[name][0] = 0
-                  print(name)
+            lock.release()
     def handlerException():
             nonlocal sock_blu,conectarUM,filenameLog
             log('Exception()\n',filenameLog)
@@ -233,7 +232,7 @@ def UMhandler(bd_addr,port,name):
             conectarUM = True
             e = sys.exc_info()[0]
             log(str(e),filenameLog)
-            time.sleep(2)
+            #time.sleep(2)
 
     def cambiarNombreArchivo(filename,name):
             nonlocal filenameLog
@@ -244,13 +243,21 @@ def UMhandler(bd_addr,port,name):
             print(string)
             os.system(string)
             log("renombrando: de "+filename+" a "+nuevoNombre+"\n",filenameLog)
+    def handlerConectar():
+            nonlocal sock_blu,filenameLog,conectarUM
+            log('handlerConectar()\n',filenameLog)
+            sock_blu.connect()
+            log('Coneccion establecida\n',filenameLog)
+            time.sleep(1)
+            sock_blu.write(b'S')
+            conectarUM = False
     # inicio 
     filenameLog = str(bd_addr)+".log"
     log("\n\n\n\n",filenameLog)
     conectarUM = True
     stackDatos = np.zeros((TAM,4))
     indStack = 0
-    EnOrdenie = False
+    DatoAnteriorValido = False
     finVaca = False
     filename = ""
     sock_blu = comunicacion.BluetoothRFcomm(bd_addr,"rfcomm"+str(port))
@@ -270,13 +277,19 @@ def UMhandler(bd_addr,port,name):
             if conectarUM:
                 handlerConectar()
 
-
+#            semaforo.acquire(False)
+#            time.sleep(0.3)
+#            sock_blu.connect()
+            #time.sleep(0.05)
             dato = hayPaquete()
+#            sock_blu.close()
+#            semaforo.release()
             if ( len( dato) > 0  ):
-                procesarPaquete(dato,name)
+                procesarDato(dato,name)
 
         except:
             handlerException()
+            
 
 
 def log(texto,filename):

@@ -62,17 +62,19 @@ class ProcessServidorMovil(multiprocessing.Process):
    def getPipe(self):
       return self.pipe_parent
    def run(self):
-      print ("Starting GestorUM")
+      print ("Starting servidorP")
       movil.servidorMovil(self.pipe_child,self.device)
-      print ("Exiting GestorUM")
+      print ("Exiting servidorP")
    def join(self,timeout=None):
       multiprocessing.Process.join(self,timeout)
       self.pipe_parent.close()
+
 def log(texto,filename):
     global pathLog
     file = open(pathLog+filename,"a")
     file.writelines(str(datetime.datetime.now())+": "+texto+"\n\n")
     file.close()
+
 if __name__ == '__main__':
     macDongle = "00:1F:81:00:08:30"
     #busco por dispositivos bluetooth cercanos
@@ -83,7 +85,7 @@ if __name__ == '__main__':
     servidor.start()
     gestor = ProcessGestorUMs()
     gestorPipe = gestor.getPipe()
-
+    gestor.start()
     while True:
         try:
             time.sleep(1)

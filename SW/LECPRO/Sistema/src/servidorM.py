@@ -11,6 +11,7 @@ from select import*
 import multiprocessing
 
 def servidorMovil(conn,mac):
+
     server_sock=BluetoothSocket(RFCOMM)
     server_sock.bind((mac,PORT_ANY))
     server_sock.listen(1)
@@ -48,15 +49,15 @@ def servidorMovil(conn,mac):
                                 conn.send(['cantidad',data[9:]])
                             else:
                                 client_sock.send('Formato incorrecto\n')
-            readable,writable,excepts=select([conn],[],[], 1 )
-            if conn in readable:
-                msj = conn.recv()
-                client_sock.send(msj[1]+' '+msj[0])
+#            readable,writable,excepts=select([conn],[],[], 1 )
+#            if conn in readable:
+#                msj = conn.recv()
+#                client_sock.send(msj[1]+' '+msj[0])
                 #client_sock.send(' ')
                 #client_sock.send(msj[0])
                 #client_sock.send('\n')
-                if msj[1]=='ORD':
-                    client_sock.send('Ingrese caravana: formato:CAR XXXXX UMX\n')
+#                if msj[1]=='ORD':
+#                    client_sock.send('Ingrese caravana: formato:CAR XXXXX UMX\n')
 
                 
         except IOError:

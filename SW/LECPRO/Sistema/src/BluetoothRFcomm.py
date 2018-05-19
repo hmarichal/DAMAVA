@@ -14,13 +14,14 @@ class BluetoothRFcomm:
         print(string)
         self.stream = os.system(string)
     def connect(self):
-        self.serialDevice = serial.Serial("/dev/"+self.device,baudrate=38400,timeout=1)
+        self.serialDevice = serial.Serial("/dev/"+self.device,baudrate=115200,timeout=1)
     def write(self,argument):
         self.serialDevice.write(argument)
     def read(self,cantidad):
         return self.serialDevice.read(cantidad)
     def close(self):
         self.serialDevice.close()
+        #os.system("sudo rfcomm release "+self.device)
     def __del__(self):
         os.system("sudo rfcomm release "+self.device)
 
